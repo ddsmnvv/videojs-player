@@ -1,0 +1,30 @@
+@use '../abstracts/mixins' as *;
+@use '../components/control-bar' as *;
+@use '../components/variables' as *;
+@use '../base/font' as *;
+
+/*TEXT TRACK DISPLAY*/
+.vjs-luxmty .vjs-text-track-display>div>div>div {
+  border-radius: .5em;
+  font-weight: var(--fw-captions-subs);
+  padding: 0 .8em 0 .8em !important;
+  display: inline-flex !important;
+  text-shadow: .5px .5px 9px rgba(0, 0, 0, 1), .5px .5px 9px rgba(0, 0, 0, 1), .5px .5px 9px rgba(0, 0, 0, 1), .5px .5px .5px rgba(0, 0, 0, 1), .5px .5px .5px rgba(0, 0, 0, 1), .5px .5px .5px rgba(0, 0, 0, 1);
+}
+
+.vjs-luxmty .vjs-text-track-display {
+  position: absolute;
+  bottom: 1em;
+  transform: translateY(-$height-control-bar + .5em);
+  left: 0;
+  right: 0;
+  top: 0;
+  pointer-events: none;
+  @include transition($trans-control-bar);
+}
+
+.vjs-luxmty.vjs-user-inactive.vjs-playing .vjs-text-track-display {
+  bottom: 1em;
+  transform: translateY(-1.4em);
+}
+

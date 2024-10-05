@@ -1,0 +1,136 @@
+@use '../base/colors' as *;
+@use '../base/options' as *;
+
+/*LOADING SPINNER*/
+.vjs-luxmty .vjs-loading-spinner {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  text-align: left;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  visibility: hidden;
+  border: none;
+}
+
+.vjs-luxmty.vjs-seeking .vjs-loading-spinner,
+.vjs-luxmty.vjs-waiting .vjs-loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: vjs-spinner-show 0s linear .3s forwards;
+}
+
+.vjs-luxmty.vjs-error .vjs-loading-spinner {
+  display: none;
+}
+
+.vjs-luxmty .vjs-loading-spinner:before {
+  content: "";
+  border-width: .55em;
+  border-style: solid;
+  border-color: var(--border-color-loading-spinner);
+  position: absolute;
+  box-sizing: inherit;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  margin: unset;
+  opacity: 1;
+  animation: vjs-default-spinner-visibilty 0s linear .3s forwards;
+}
+
+//Svg Loading Spinner
+.vjs-luxmty .vjs-loading-spinner:after {
+  background-image: var(--loading-spinner-svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 180%;
+  width: 180%;
+  position: absolute;
+  box-sizing: inherit;
+  animation: vjs-custom-spinner-visibility 0s linear .3s forwards;
+}
+
+.vjs-luxmty.vjs-seeking .vjs-loading-spinner:before,
+.vjs-luxmty.vjs-waiting .vjs-loading-spinner:before {
+  animation: vjs-spinner-spin .7s cubic-bezier(.27, .28, .69, .68) infinite, vjs-loading-spinner-fade .8s linear infinite;
+}
+
+.vjs-luxmty.vjs-seeking .vjs-loading-spinner:before,
+.vjs-luxmty.vjs-waiting .vjs-loading-spinner:before {
+  border-top-color: transparent;
+}
+
+.vjs-luxmty.vjs-seeking .vjs-loading-spinner:after,
+.vjs-luxmty.vjs-waiting .vjs-loading-spinner:after {
+  border-top-color: transparent;
+  animation-delay: 0;
+}
+
+/*uncomment next class if you want hide loading spinner when scrubbing*/
+/*.vjs-luxmty.vjs-scrubbing .vjs-loading-spinner {
+  display: none;
+}
+*/
+
+@keyframes vjs-spinner-show {
+  to {
+    visibility: var(--default-loading-spinner-visibility);
+  }
+}
+
+@keyframes vjs-default-spinner-visibilty {
+  to {
+    visibility: var(--default-loading-spinner-visibility);
+  }
+}
+
+@keyframes vjs-custom-spinner-visibility {
+  to {
+    visibility: var(--custom-loading-spinner-visibility);
+  }
+}
+
+@keyframes vjs-spinner-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes vjs-loading-spinner-fade {
+  0% {
+    border-top-color: var(--spin-color-1);
+    border-bottom-color: var(--spin-color-2);
+  }
+
+  20% {
+    border-top-color: var(--spin-color-1);
+    border-bottom-color: var(--spin-color-2);
+  }
+
+
+  35% {
+    border-top-color: var(--spin-color-1);
+    border-bottom-color: var(--spin-color-2);
+  }
+
+
+  60% {
+    border-top-color: var(--spin-color-1);
+    border-bottom-color: var(--spin-color-2);
+  }
+
+
+  100% {
+    border-top-color: var(--spin-color-1);
+    border-bottom-color: var(--spin-color-2);
+  }
+}

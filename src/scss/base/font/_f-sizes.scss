@@ -1,0 +1,32 @@
+/*Font Sizes*/
+:root {
+  --base-font-size: 10px;
+  --icons-size: 2em;
+}
+
+/*Buttons-Icons Size*/
+:root {
+  --fs-play-control: 1.4em;
+  --fs-volume: 1em;
+  --fs-fullscreen: 1.4em;
+  --fs-pip-control: 1em;
+  --fs-pip-exit: 1.223em;
+  --fs-gear-quality: .92em;
+  --fs-big-play-icon: normal;
+  --fs-playback-rate-icon: .89em;
+}
+
+:root {
+  --fs-error-disp: 1.5em;
+  --fs-live-control: 1em;
+  --fs-live-ui-control: 1em;
+  --fs-menu-list: 1em;
+  --fs-menu-title: 1em;
+
+  --fs-time-control: 1em;
+  --fs-time-divider: 1.3em;
+
+  --fs-title-bar: 1.6em;
+  --fs-title-bar-mobile: 1.25em;
+  --fs-title-description: 1em;
+}

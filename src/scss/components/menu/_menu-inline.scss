@@ -1,0 +1,43 @@
+@use "../../abstracts/mixins" as *;
+
+.vjs-luxmty .vjs-menu-button-inline {
+  @include transition(all 0.4s);
+  overflow: hidden;
+}
+
+.vjs-luxmty .vjs-menu-button-inline:before {
+  width: 2.222222222em;
+}
+
+// Hover state
+.vjs-luxmty .vjs-menu-button-inline:hover,
+.vjs-luxmty .vjs-menu-button-inline:focus,
+.vjs-luxmty .vjs-menu-button-inline.vjs-slider-active {
+  width: 12em;
+}
+
+.vjs-menu-button-inline .vjs-menu {
+  opacity: 0;
+  height: 100%;
+  width: auto;
+  position: absolute;
+  left: 4em;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  @include transition(all 0.4s);
+}
+
+.vjs-menu-button-inline:hover .vjs-menu,
+.vjs-menu-button-inline:focus .vjs-menu,
+.vjs-menu-button-inline.vjs-slider-active .vjs-menu {
+  display: block;
+  opacity: 1;
+}
+
+.vjs-menu-button-inline .vjs-menu-content {
+  width: auto;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}

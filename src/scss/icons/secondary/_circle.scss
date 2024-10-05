@@ -1,0 +1,10 @@
+@use '../../abstracts/icon-code' as *;
+
+.vjs-luxmty .vjs-icon-circle {
+  font-size: 1em;
+}
+.vjs-luxmty .vjs-icon-circle:before, 
+.vjs-luxmty .vjs-volume-level:before, 
+.vjs-luxmty .vjs-play-progress:before {
+  @include icon($vjs-circle);
+}

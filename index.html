@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+	<meta name="theme-color" content="#FF5733">
+	<link rel="apple-touch-startup-image" href="icon.png">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Тестовый плеер кинотека</title>
+  <!-- CSS VideoJS -->
+  <link rel="stylesheet" href="dist/VideoJs/video-js.css">
+  <!-- Luxmty Skin -->
+  <link rel="stylesheet" href="dist/vjs-luxmty.css">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+
+<style>
+  /* Модальное окно */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close-button:hover,
+  .close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
+</head>
+
+<body>
+<!-- Player -->
+<div class="player-container">
+  <video-js id="video-player" class="vjs-luxmty vjs-16-9 vjs-show-big-play-button-on-pause" crossorigin="anonymous" controls playsinline>
+    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4">
+  </video-js>
+</div>
+
+<!-- Модальное окно для жалобы -->
+<div id="complaint-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Подать жалобу</h2>
+    <form id="complaint-form">
+      <label for="complaint">Описание проблемы:</label><br>
+      <textarea id="complaint" name="complaint" rows="4" cols="50"></textarea><br><br>
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
+</div>
+
+  <!-- Videojs Libraries JS -->
+  <script src='dist/VideoJs/video.js'></script>
+
+  <!--Plugins-->
+  <script src="dist/lang/ru.js"></script>
+  <script src="dist/lang/en.js"></script>
+  <script src="dist/plugins/mobile-ui.js"></script>
+  <script src='dist/plugins/contrib-quality-menu.js'></script>
+  <script src='dist/plugins/logo.js'></script>
+  <script src="dist/plugins/logo-control-bar.js"></script>
+  <script src="dist/plugins/poster-time.js"></script>
+  <script src='dist/plugins/context-menu-ui.js'></script>
+  <script src='dist/plugins/svg-loading-spinner.js'></script>
+
+  <!-- Video Player Settings -->
+  <script src="dist/video-player.js"></script>
+
+</body>
+</html>

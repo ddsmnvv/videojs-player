@@ -1,0 +1,131 @@
+@use '../abstracts/icon-code' as *;
+@use '../base/colors' as *;
+@use '../base/font' as *;
+
+/*CONTRIB QUALITY MENU*/
+
+// Sass for videojs-contrib-quality-menu
+.vjs-luxmty {
+
+  // This class is added to the video.js element by the plugin by default.
+  &.vjs-quality-menu {
+    display: block;
+
+    /*Icon Button*/
+    @mixin vjs-quality() {
+      .vjs-quality-menu-button {
+        position: initial;
+        cursor: pointer;
+
+        &:before {
+          content: none;
+        }
+
+        .vjs-icon-placeholder {
+          font-size: var(--fs-gear-quality);
+          font-family: var(--icon-family);
+          font-weight: normal;
+          font-style: normal;
+
+          &:before {
+            @include icon($vjs-gear);
+          }
+        }
+      }
+    }
+
+    @include vjs-quality();
+
+    //Menu
+    .vjs-quality-menu-button {
+      position: relative;
+
+      li {
+        text-transform: none;
+      }
+    }
+
+    .vjs-menu-item .vjs-control-text {
+      position: absolute;
+    }
+
+    .vjs-quality-menu-wrapper {
+      position: relative;
+
+      li {
+        text-transform: none;
+      }
+    }
+
+    /*HD Menu sub labels*/
+    .vjs-quality-menu-item-sub-label {
+      font-size: 88%;
+      color: var(--menu-sublabel-hd);
+      font-family: Helvetica;
+      font-weight: bolder;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      width: 4em;
+    }
+
+    .vjs-quality-menu-button-use-resolution {
+      .vjs-quality-menu-item-sub-label {
+        position: absolute;
+        right: 0;
+        text-align: center;
+        width: 4em;
+      }
+    }
+
+    .vjs-menu li.vjs-selected .vjs-quality-menu-item-sub-label {
+      color: var(--menu-selected-sublabel-hd);
+    }
+
+    /*HD & 4K Labels Button*/
+    .vjs-quality-menu-button-4K-flag:after,
+    .vjs-quality-menu-button-HD-flag:after {
+      position: absolute;
+      background-color: var(--bg-hd-label-icon);
+      color: var(--hd-label-icon-text);
+      content: "";
+      font-family: var(--font);
+      font-size: 0.8em;
+      font-weight: 700;
+      line-height: 1.6em;
+      height: 1.6em;
+      width: 2.2em;
+      padding: 0;
+      right: 0;
+      top: 1.098em;
+      text-align: center;
+      border-radius: 2em;
+      letter-spacing: 0em;
+    }
+
+    /*Position of hd-4k labels. Layout mobile and smaller mobiles*/
+    &.vjs-layout-small {
+
+      .vjs-quality-menu-button-4K-flag:after,
+      .vjs-quality-menu-button-HD-flag:after {
+        top: 0.6em;
+      }
+    }
+
+    &.vjs-layout-x-small {
+
+      .vjs-quality-menu-button-4K-flag:after,
+      .vjs-quality-menu-button-HD-flag:after {
+        top: 0.52em;
+      }
+    }
+
+    .vjs-quality-menu-button-HD-flag:after {
+      content: "HD";
+    }
+
+    .vjs-quality-menu-button-4K-flag:after {
+      content: "4K";
+    }
+  }
+}

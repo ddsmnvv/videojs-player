@@ -1,0 +1,5 @@
+@use '../../abstracts/icon-code' as *;
+
+.vjs-luxmty .vjs-icon-repeat:before {
+  @include icon($vjs-repeat);
+}

@@ -1,0 +1,47 @@
+@use '../../abstracts/icon-code' as *;
+
+/*SHARE SOCIAL ICONS*/
+.vjs-luxmty .vjs-icon-share {
+  font-size: 1em;
+}
+
+.vjs-luxmty .vjs-icon-share:before {
+  @include icon($vjs-share);
+}
+
+.vjs-luxmty .vjs-icon-facebook,
+.vjs-luxmty .vjs-icon-pinterest {
+  font-size: 1em;
+}
+
+.vjs-luxmty .vjs-icon-facebook:before {
+  @include icon($vjs-facebook);
+  color: #0165E1;
+}
+
+.vjs-luxmty .vjs-icon-linkedin {
+  font-size: 1em;
+}
+
+.vjs-luxmty .vjs-icon-linkedin:before {
+  @include icon($vjs-linkedin);
+  color: #fff; 
+}
+
+.vjs-luxmty .vjs-icon-twitter {
+  font-size: .76em;
+}
+
+.vjs-luxmty .vjs-icon-twitter:before {
+  @include icon($bi-twitter);
+}
+
+.vjs-luxmty .vjs-icon-tumblr:before {
+  @include icon($vjs-tumblr);
+  color: #34465D;
+}
+
+.vjs-luxmty .vjs-icon-pinterest:before {
+  @include icon($vjs-pinterest);
+  color: #E60023;
+}

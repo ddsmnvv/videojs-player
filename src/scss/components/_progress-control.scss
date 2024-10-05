@@ -1,0 +1,189 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/icon-code' as *;
+@use '../base/colors' as *;
+@use '../base/font' as *;
+@use '../base/options' as *;
+@use '../components/variables' as v;
+
+/*PROGRESS CONTROL*/
+.vjs-luxmty .vjs-progress-control {
+  cursor: pointer;
+  @include flex(auto);
+  @include display-flex(flex, center);
+  width: 100%;
+  min-width: 4em;
+  height: v.$height-progress-control;
+  position: absolute;
+  left: 0;
+  padding-top: 1.3em;
+  padding-right: .194em;
+  top: v.$top-progress-control;
+  touch-action: none;
+}
+
+.vjs-luxmty .vjs-play-progress {
+  background: var(--bg-play-progress);
+}
+
+.vjs-luxmty .vjs-load-progress {
+  background: var(--bg-load-progress);
+}
+
+.vjs-luxmty .vjs-load-progress div {
+  background: var(--bg-load-progress-2);
+}
+
+.vjs-luxmty.vjs-live .vjs-progress-control {
+  display: none;
+}
+
+.vjs-luxmty.vjs-liveui .vjs-progress-control {
+  @include display-flex(flex, center);
+}
+
+/*Progress Holder*/
+.vjs-luxmty .vjs-progress-holder {
+  @include flex(auto);
+  @include transition(all 0.1s);
+  height: 0.3em;
+  border-radius: v.$radius-progress-holder;
+
+}
+
+.vjs-luxmty .vjs-progress-control .vjs-progress-holder {
+  margin: 0 10px;
+}
+
+.vjs-luxmty .vjs-progress-holder {
+  font-size: v.$size-progress-control-holder;
+}
+
+.vjs-luxmty .vjs-progress-control:hover .vjs-progress-holder {
+  font-size: v.$size-progress-control-holder;
+}
+
+.vjs-luxmty .vjs-progress-holder .vjs-play-progress,
+.vjs-luxmty .vjs-progress-holder .vjs-load-progress,
+.vjs-luxmty .vjs-progress-holder .vjs-load-progress div {
+  position: absolute;
+  display: block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 0;
+  opacity: 1;
+  border-radius: v.$radius-progress-holder;
+}
+
+/*Progress Circle*/
+.vjs-luxmty .vjs-play-progress {
+  font-family: var(--icon-family);
+  z-index: 2;
+
+  &:before,
+  &:after {
+    position: absolute;
+    @include display-flex(flex, center, center);
+    color: var(--circle-progress-color-1);
+    background-color: var(--circle-progress-color-2);
+    border-radius: 50%;
+    font-size: 1em;
+    transform: scale(.78, .78);
+    @include icon($bi-circle-rec-fill);
+    height: .5em;
+    width: .5em;
+    right: -0.29em;
+    top: -.08245em;
+    line-height: unset;
+    transition: all ease .2s;
+    visibility: visible;
+    opacity: var(--circle-progress-on-off);
+  }
+}
+
+.vjs-luxmty .vjs-progress-control:hover .vjs-play-progress:before {
+  transform: scale(.9, .9);
+  opacity: 1;
+}
+
+.vjs-luxmty.vjs-scrubbing .vjs-progress-control:hover .vjs-play-progress:before {
+  transform: scale(.9, .9);
+  transition: all ease-out .2s;
+  opacity: 1;
+}
+
+/*---New circle progress hover effect---*/
+.vjs-luxmty .vjs-progress-control .vjs-play-progress:after {
+  background-color: transparent;
+  color: transparent;
+  z-index: -1;
+}
+
+.vjs-luxmty .vjs-progress-control:hover .vjs-play-progress:after {
+  transition: all ease .2s;
+}
+
+.vjs-luxmty.vjs-scrubbing .vjs-progress-control:hover .vjs-play-progress:after {
+  color: var(--circle-progress-seeking-scrubbing);
+  transform: scale(1.6, 1.6);
+  opacity: 1;
+  transition: all ease-out .2s;
+}
+
+////////
+
+.vjs-luxmty .vjs-time-tooltip {
+  background-color: rgba(255, 255, 255, 0.8);
+  @include border-radius(0.3em);
+  color: #000;
+  float: right;
+  font-family: var(--font);
+  font-size: 1em;
+  padding: 6px 8px 8px 8px;
+  pointer-events: none;
+  position: absolute;
+  top: -3.4em;
+  text-shadow: none;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.vjs-luxmty .vjs-progress-holder:focus .vjs-time-tooltip {
+  display: none;
+}
+
+.vjs-luxmty .vjs-progress-control:hover .vjs-time-tooltip,
+.vjs-luxmty .vjs-progress-control:hover .vjs-progress-holder:focus .vjs-time-tooltip {
+  display: block;
+  font-size: 0.6em;
+  visibility: visible;
+}
+
+.vjs-luxmty .vjs-progress-control.disabled:hover .vjs-time-tooltip {
+  font-size: 1em;
+}
+
+.vjs-luxmty .vjs-progress-control .vjs-mouse-display {
+  display: none;
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: #000;
+  z-index: 1;
+}
+
+.vjs-luxmty .vjs-progress-control:hover .vjs-mouse-display {
+  display: block;
+}
+
+.vjs-luxmty.vjs-user-inactive .vjs-progress-control .vjs-mouse-display {
+  visibility: hidden;
+  opacity: 0;
+  $trans: visibility 1.0s, opacity 1.0s;
+  @include transition($trans);
+}
+
+.vjs-mouse-display .vjs-time-tooltip {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+}

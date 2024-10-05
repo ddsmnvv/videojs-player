@@ -1,0 +1,39 @@
+@use '../../abstracts/icon-code' as *;
+@use '../../base/colors' as *;
+@use '../../base/font' as *;
+
+
+/*SUBTITLES ICONS*/
+.vjs-luxmty .vjs-icon-subtitles,
+.vjs-luxmty .vjs-subs-caps-button .vjs-icon-placeholder,
+.vjs-luxmty.video-js:lang(en-GB) .vjs-subs-caps-button .vjs-icon-placeholder,
+.vjs-luxmty.video-js:lang(en-IE) .vjs-subs-caps-button .vjs-icon-placeholder,
+.vjs-luxmty.video-js:lang(en-AU) .vjs-subs-caps-button .vjs-icon-placeholder,
+.vjs-luxmty.video-js:lang(en-NZ) .vjs-subs-caps-button .vjs-icon-placeholder,
+.vjs-luxmty .vjs-subtitles-button .vjs-icon-placeholder {
+  font-size: 1.1em;
+}
+
+
+.vjs-luxmty .vjs-icon-subtitles:before,
+.vjs-luxmty .vjs-subs-caps-button .vjs-icon-placeholder:before,
+.vjs-luxmty.video-js:lang(en-GB) .vjs-subs-caps-button .vjs-icon-placeholder:before,
+.vjs-luxmty.video-js:lang(en-IE) .vjs-subs-caps-button .vjs-icon-placeholder:before,
+.vjs-luxmty.video-js:lang(en-AU) .vjs-subs-caps-button .vjs-icon-placeholder:before,
+.vjs-luxmty.video-js:lang(en-NZ) .vjs-subs-caps-button .vjs-icon-placeholder:before,
+.vjs-luxmty .vjs-subtitles-button .vjs-icon-placeholder:before {
+  @include icon($vjs-subtitles);
+}
+
+.vjs-luxmty .vjs-icon-captions:before,
+.vjs-luxmty:lang(en) .vjs-subs-caps-button .vjs-icon-placeholder:before,
+.vjs-luxmty:lang(fr-CA) .vjs-subs-caps-button .vjs-icon-placeholder:before,
+.vjs-luxmty .vjs-captions-button .vjs-icon-placeholder:before {
+  @include icon($vjs-captions);
+}
+
+.vjs-luxmty .vjs-subs-caps-button+.vjs-menu .vjs-captions-menu-item .vjs-menu-item-text .vjs-icon-placeholder:before {
+  font-family: var(--icon-family);
+  @include icon($vjs-captions);
+  color: var(--cc-menu-icon-color);
+}

@@ -1,0 +1,9 @@
+@use '../../abstracts/icon-code' as *;
+
+.vjs-luxmty .vjs-icon-circle-outline {
+  font-size: 1em;
+}
+
+.vjs-luxmty .vjs-icon-circle-outline:before {
+  @include icon($vjs-circle-outline);
+}

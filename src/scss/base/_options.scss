@@ -1,0 +1,8 @@
+:root {
+  --icon-spacing: 2.2rem; // ICON SPACING use rem
+  --error-display-image: url("");
+  --loading-spinner-svg: url("");
+  --default-loading-spinner-visibility: visible;
+  --custom-loading-spinner-visibility: hidden;
+  --circle-progress-on-off: 0; /*0 for make no visible, 1 for always visible*/
+}

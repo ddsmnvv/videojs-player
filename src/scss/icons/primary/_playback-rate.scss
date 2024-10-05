@@ -1,0 +1,48 @@
+@use '../../abstracts/icon-code' as *;
+@use '../../abstracts/mixins' as *;
+@use '../../base/font' as *;
+@use '../../components/variables' as *;
+
+/*PLAYBACK RATE SPEED ICON SECTION*/
+.vjs-luxmty .vjs-playback-rate>.vjs-menu-button,
+.vjs-luxmty .vjs-playback-rate .vjs-playback-rate-value {
+  position: absolute;
+  @include display-flex(flex, center, center);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vjs-luxmty .vjs-playback-rate>.vjs-menu-button,
+.vjs-luxmty .vjs-playback-rate .vjs-icon-placeholder {
+  font-size: var(--fs-playback-rate-icon);
+}
+
+.vjs-luxmty .vjs-playback-rate>.vjs-menu-button,
+.vjs-luxmty .vjs-playback-rate .vjs-icon-placeholder:before {
+  @include icon($playback-rate-icon);
+}
+
+.vjs-luxmty .vjs-playback-rate .vjs-playback-rate-value {
+  pointer-events: none;
+  font-size: 1.5em;
+  line-height: 2;
+  text-align: center;
+  display: none;
+}
+
+.vjs-luxmty .vjs-playback-rate .vjs-menu {
+  width: 4em;
+  left: 0em;
+}
+
+.vjs-luxmty.vjs-layout-small .vjs-playback-rate,
+.vjs-luxmty.vjs-layout-x-small .vjs-playback-rate,
+.vjs-luxmty.vjs-layout-tiny .vjs-playback-rate {
+  @include display-flex(flex)
+}
+
+.vjs-luxmty.vjs-live .vjs-playback-rate {
+  display: none;
+}

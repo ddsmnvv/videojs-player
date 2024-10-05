@@ -1,0 +1,17 @@
+@use '../../abstracts/icon-code' as *;
+
+.vjs-luxmty .vjs-icon-downloading:before {
+  @include icon($vjs-downloading);
+}
+
+.vjs-luxmty .vjs-icon-file-download:before {
+  @include icon($vjs-file-download);
+}
+
+.vjs-luxmty .vjs-icon-file-download-done:before {
+  @include icon($vjs-file-download-done);
+}
+
+.vjs-luxmty .vjs-icon-file-download-off:before {
+  @include icon($vjs-file-download-off);
+}

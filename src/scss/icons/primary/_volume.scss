@@ -1,0 +1,28 @@
+@use '../../abstracts/icon-code' as *;
+@use '../../base/font' as *;
+@use '../../base/colors' as *;
+
+.vjs-luxmty .vjs-mute-control .vjs-icon-placeholder {
+  font-size: var(--fs-volume);
+}
+
+.vjs-icon-volume-mute:before,
+.vjs-luxmty .vjs-mute-control.vjs-vol-0 .vjs-icon-placeholder:before {
+  @include icon($vjs-volume-mute);
+  color: var(--mute);
+}
+
+.vjs-icon-volume-low:before,
+.vjs-luxmty .vjs-mute-control.vjs-vol-1 .vjs-icon-placeholder:before {
+  @include icon($vjs-volume-low);
+}
+
+.vjs-icon-volume-mid:before,
+.vjs-luxmty .vjs-mute-control.vjs-vol-2 .vjs-icon-placeholder:before {
+  @include icon($vjs-volume-mid);
+}
+
+.vjs-icon-volume-high:before,
+.vjs-luxmty .vjs-mute-control .vjs-icon-placeholder:before {
+   @include icon($vjs-volume-high);
+}

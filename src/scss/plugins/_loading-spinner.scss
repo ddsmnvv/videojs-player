@@ -1,0 +1,50 @@
+/*SVG LOADING SPINNER PLUGIN*/
+.vjs-luxmty .vjs-svg-loading-spinner {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  visibility: hidden;
+}
+
+.vjs-luxmty.vjs-seeking .vjs-svg-loading-spinner,
+.vjs-luxmty.vjs-waiting .vjs-svg-loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: plugin-custom-loading-spinner 0s linear 0.3s forwards;
+}
+
+.vjs-luxmty.vjs-error .vjs-svg-loading-spinner {
+  display: none;
+}
+
+/*
+.vjs-luxmty.vjs-scrubbing .vjs-svg-loading-spinner {
+  display: none;
+}
+*/
+
+/*.vjs-svg-loading-spinner img {
+  width: 91px;
+}*/
+
+.vjs-luxmty.vjs-layout-small .vjs-svg-loading-spinner img {
+  width: 63px;
+}
+
+.vjs-luxmty.vjs-layout-x-small .vjs-svg-loading-spinner img {
+  width: 63px;
+}
+
+.vjs-luxmty.vjs-layout-tiny .vjs-svg-loading-spinner img {
+  width: 63px;
+}
+
+@keyframes plugin-custom-loading-spinner {
+  to {
+    visibility: visible;
+  }
+}

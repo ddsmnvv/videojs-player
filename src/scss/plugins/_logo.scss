@@ -1,0 +1,46 @@
+@use '../abstracts/mixins' as *;
+@use '../components/control-bar' as *;
+@use '../components/variables' as *;
+
+$trans-logo: visibility 2s, opacity 2s;
+
+/*! @name videojs-logo @version 3.0.0 @license MIT */
+.vjs-luxmty.vjs-logo {
+  display: block;
+}
+
+.vjs-luxmty.vjs-logo .vjs-logo-content {
+  position: absolute;
+  opacity: 1;
+  transition: $trans-logo;
+}
+
+.vjs-luxmty.vjs-logo .vjs-logo-content.vjs-logo-hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.vjs-luxmty.vjs-error.vjs-logo .vjs-logo-content {
+  display: none;
+}
+
+/*Logo when bottom-left or bottom right*/
+.vjs-luxmty.vjs-logo .vjs-logo-content.vjs-logo-bottom {
+  position: absolute;
+  opacity: 1;
+  @include transition($trans-control-bar);
+}
+
+.vjs-luxmty.vjs-logo .vjs-logo-content.vjs-logo-hide.vjs-logo-bottom {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(0);
+  @include transition($trans-logo);
+}
+
+.vjs-luxmty.vjs-has-started.vjs-user-active.vjs-logo .vjs-logo-content.vjs-logo-bottom,
+.vjs-luxmty.vjs-has-started.vjs-paused.vjs-logo .vjs-logo-content.vjs-logo-bottom {
+  transform: translateY(-$height-control-bar);
+  @include transition($trans-control-bar);
+}
+

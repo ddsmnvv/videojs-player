@@ -1,0 +1,20 @@
+@use '../../components/big-play' as v;
+
+.vjs-layout-small .vjs-touch-overlay.skip:before {
+  font-size: 3.7em;
+}
+
+.vjs-layout-small .vjs-touch-overlay.skip:after {
+  font-size: .8em;
+  font-weight: bold;
+}
+
+.vjs-luxmty {
+  &.vjs-layout-small {
+    .vjs-touch-overlay .vjs-play-control {
+      font-size: 2.3em;
+      //height: v.$big-play-height;
+     //width: v.$big-play-width;
+    }
+  }
+}

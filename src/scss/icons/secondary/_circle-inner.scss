@@ -1,0 +1,9 @@
+@use '../../abstracts/icon-code' as *;
+
+.vjs-luxmty .vjs-icon-circle-inner-circle {
+  font-size: 1em;
+}
+
+.vjs-luxmty .vjs-icon-circle-inner-circle:before {
+  @include icon($vjs-circle-inner);
+}

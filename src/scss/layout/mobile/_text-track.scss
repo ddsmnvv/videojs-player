@@ -1,0 +1,9 @@
+@use '../../components/variables/vars' as *;
+
+.vjs-luxmty.vjs-layout-small .vjs-text-track-display {
+  transform: translateY(-$height-control-bar-mobile + .5em);
+}
+
+.vjs-luxmty.vjs-layout-small.vjs-user-inactive.vjs-playing .vjs-text-track-display {
+  transform: translateY(-.5em);
+}

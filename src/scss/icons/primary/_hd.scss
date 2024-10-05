@@ -1,0 +1,9 @@
+@use '../../abstracts/icon-code' as *;
+
+.vjs-luxmty .vjs-icon-hd {
+  font-size: 1em;
+}
+
+.vjs-luxmty .vjs-icon-hd:before {
+  @include icon($vjs-hd);
+}

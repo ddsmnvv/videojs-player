@@ -1,0 +1,9 @@
+@use '../../abstracts/icon-code' as *;
+
+.vjs-luxmty .vjs-icon-square {
+  font-size: 1em;
+}
+
+.vjs-luxmty .vjs-icon-square:before {
+  @include icon($vjs-square);
+}

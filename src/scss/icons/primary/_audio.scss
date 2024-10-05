@@ -1,0 +1,22 @@
+@use '../../abstracts/icon-code' as *;
+@use '../../base/colors' as *;
+@use '../../base/font' as *;
+
+.vjs-luxmty .vjs-icon-audio:before, 
+.vjs-luxmty .vjs-audio-button .vjs-icon-placeholder:before {
+  @include icon($vjs-audio);
+}
+
+.vjs-luxmty .vjs-audio-button + .vjs-menu .vjs-main-desc-menu-item .vjs-menu-item-text .vjs-icon-placeholder {
+  vertical-align: middle;
+  display: inline-block;
+  margin-bottom: -0.1em;
+}
+
+.vjs-luxmty .vjs-audio-button + .vjs-menu .vjs-main-desc-menu-item .vjs-menu-item-text .vjs-icon-placeholder:before {
+  @include icon($vjs-audio-description);
+  color: var(--audio-description-menu-icon-color);
+  font-family: var(--icon-family);
+  font-size: 1.5em;
+  line-height: inherit;
+}

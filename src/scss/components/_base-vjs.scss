@@ -1,0 +1,38 @@
+@use "sass:math";
+@use "../base/font" as *;
+
+*:focus {
+  outline: none;
+}
+
+/*.player-container {
+  background: #000;
+  max-width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: auto;
+}*/
+
+.vjs-luxmty {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  color: #f8f8ff;
+  background-color: #000;
+  position: relative;
+  padding: 0;
+  font-family: var(--font);
+  font-size: var(--base-font-size);
+  line-height: 1;
+  font-weight: normal;
+  font-style: normal;
+  &:-moz-full-screen { position: absolute; }
+  &:-webkit-full-screen {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  word-break: initial;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+

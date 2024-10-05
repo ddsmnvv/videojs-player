@@ -1,0 +1,70 @@
+@forward "base";
+
+@forward "components/base-vjs";
+@forward "components/big-play";
+
+@forward 'icons/primary/play-pause';
+@forward 'icons/primary/volume';
+@forward 'icons/primary/fullscreen';
+@forward 'icons/primary/picture-in-picture';
+@forward 'icons/primary/captions-subtitles';
+@forward 'icons/primary/backward-forward';
+@forward 'icons/primary/cog-gear';
+@forward 'icons/primary/hd';
+@forward 'icons/primary/playback-rate';
+@forward 'icons/primary/audio';
+@forward 'icons/primary/audio-descriptions';
+@forward 'icons/primary/chapters';
+
+@forward 'icons/social-media/share-socials';
+
+@forward 'icons/secondary/cancel';
+@forward 'icons/secondary/cast';
+@forward 'icons/secondary/circle';
+@forward 'icons/secondary/circle-outline';
+@forward 'icons/secondary/circle-inner';
+@forward 'icons/secondary/file-download';
+@forward 'icons/secondary/next-prev';
+@forward 'icons/secondary/repeat';
+@forward 'icons/secondary/shuffle';
+@forward 'icons/secondary/square';
+@forward 'icons/secondary/spinner';
+
+@forward "components/button";
+@forward "components/control-bar";
+@forward "components/control";
+@forward "components/control-spacer";
+
+@forward "components/live-control";
+@forward "components/time-control";
+@forward "components/progress-control";
+
+@forward "components/menu/menu";
+@forward "components/menu/menu-list";
+@forward "components/menu/menu-popup";
+@forward "components/menu/menu-inline";
+
+@forward "components/slider";
+@forward "components/volume-panel";
+
+@forward "components/error-display";
+@forward "components/loading-spinner";
+@forward "components/poster";
+@forward "components/scrollbar";
+
+@forward "components/title-bar";
+
+@forward "components/captions-settings";
+@forward "components/text-track";
+
+@forward 'plugins/loading-spinner';
+@forward 'plugins/mobile-ui';
+@forward 'plugins/context-menu-ui';
+@forward 'plugins/contrib-quality-menu.scss';
+@forward 'plugins/quality-selector';
+@forward 'plugins/logo.scss';
+@forward 'plugins/poster-time.scss';
+
+@forward 'plugins/logo-control-bar.scss';
+
+@forward "layout";

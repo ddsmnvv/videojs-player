@@ -1,0 +1,7 @@
+@use '../../components/control-bar' as *;
+@use '../../components/variables' as *;
+
+.vjs-luxmty.vjs-layout-small.vjs-has-started.vjs-user-active.vjs-logo .vjs-logo-content.vjs-logo-bottom,
+.vjs-luxmty.vjs-layout-small.vjs-has-started.vjs-paused.vjs-logo .vjs-logo-content.vjs-logo-bottom {
+  transform: translateY(-$height-control-bar-mobile);
+}

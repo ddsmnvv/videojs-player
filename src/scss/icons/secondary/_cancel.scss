@@ -1,0 +1,7 @@
+@use '../../abstracts/icon-code' as *;
+ 
+ /*SECONDARY ICONS*/
+.vjs-luxmty .vjs-icon-cancel:before, 
+.vjs-luxmty .vjs-control.vjs-close-button .vjs-icon-placeholder:before {
+  @include icon($bi-cancel-fill);
+}

@@ -1,0 +1,5 @@
+@use '../../components/variables' as v;
+
+.vjs-luxmty.vjs-layout-small .vjs-control-bar {
+  height: v.$height-control-bar-mobile;
+}

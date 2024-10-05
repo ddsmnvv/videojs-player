@@ -1,0 +1,16 @@
+@use '../components/variables' as v;
+@use '../base/colors' as *;
+
+/*SCROLLBAR*/
+.vjs-luxmty {
+  scrollbar-width: v.$scrollbar-width-firefox;
+  scrollbar-color: var(--scrollbar) transparent;
+}
+
+.vjs-luxmty ul::-webkit-scrollbar {
+  width: v.$scrollbar-width;
+}
+
+.vjs-luxmty ul::-webkit-scrollbar-thumb { 
+  background-color: var(--scrollbar);
+} 

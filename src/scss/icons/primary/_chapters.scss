@@ -1,0 +1,15 @@
+@use '../../abstracts/icon-code' as *;
+
+.vjs-luxmty .vjs-icon-chapters, 
+.vjs-luxmty .vjs-chapters-button .vjs-icon-placeholder {
+  font-size: 1.15em;
+}
+
+.vjs-luxmty .vjs-icon-chapters:before, 
+.vjs-luxmty .vjs-chapters-button .vjs-icon-placeholder:before {
+  @include icon($vjs-chapters);
+}
+
+.vjs-chapters-button .vjs-menu ul {
+  width: 24em;
+}

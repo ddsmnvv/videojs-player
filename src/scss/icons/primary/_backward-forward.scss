@@ -1,0 +1,45 @@
+@use '../../abstracts/icon-code' as *;
+
+
+/*BACKWARD AND FORWARD ICONS*/
+.vjs-luxmty .vjs-icon-replay-5:before,
+.vjs-luxmty .vjs-skip-backward-5 .vjs-icon-placeholder:before {
+  @include icon($vjs-replay-5);
+}
+
+.vjs-icon-replay-10:before,
+.vjs-luxmty .vjs-skip-backward-10 .vjs-icon-placeholder:before {
+  @include icon($vjs-replay-10);
+}
+
+.vjs-icon-replay-30:before,
+.vjs-luxmty .vjs-skip-backward-30 .vjs-icon-placeholder:before {
+  @include icon($vjs-replay-30);
+}
+
+.vjs-icon-forward-5:before,
+.vjs-luxmty .vjs-skip-forward-5 .vjs-icon-placeholder:before {
+  @include icon($vjs-forward-5);
+}
+
+.vjs-icon-forward-10:before,
+.vjs-luxmty .vjs-skip-forward-10 .vjs-icon-placeholder:before {
+  @include icon($vjs-forward-10);
+}
+
+.vjs-icon-forward-30:before,
+.vjs-luxmty .vjs-skip-forward-30 .vjs-icon-placeholder:before {
+  @include icon($vjs-forward-30);
+}
+
+.vjs-luxmty.vjs-live .vjs-skip-forward-5 {
+  display: none;
+}
+
+.vjs-luxmty.vjs-live .vjs-skip-forward-10 {
+  display: none;
+}
+
+.vjs-luxmty.vjs-live .vjs-skip-forward-30 {
+  display: none;
+}

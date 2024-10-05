@@ -1,0 +1,35 @@
+@use '../abstracts/mixins' as m;
+@use '../base/colors' as *;
+@use '../components/variables' as v;
+
+$trans-control-bar: all cubic-bezier(0.45, 0.44, 0.67, 0.66), ease-in-out 0.5s;
+
+/*CONTROL BAR*/
+.vjs-luxmty .vjs-control-bar {
+  display: none;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: v.$height-control-bar;
+  background-color: var(--bg-control-bar);
+  padding: v.$padding-control-bar;
+  z-index: 2;
+}
+
+.vjs-luxmty.vjs-has-started .vjs-control-bar,
+.vjs-audio-only-mode .vjs-control-bar {
+  @include m.display-flex(flex);
+  visibility: visible;
+  opacity: 1;
+  @include m.transition($trans-control-bar);
+}
+
+.vjs-luxmty.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar {
+  visibility: visible;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(0, 4em);
+  @include m.transition($trans-control-bar);
+}

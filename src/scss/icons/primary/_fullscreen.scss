@@ -1,0 +1,21 @@
+@use '../../abstracts/icon-code' as *;
+@use '../../base/colors' as *;
+@use '../../base/font' as *;
+
+// FULLSCREEN ICONS
+.vjs-luxmty .vjs-fullscreen-control {
+  font-size: var(--fs-fullscreen);
+  color: var(--fullscreen);
+  cursor: pointer;
+  flex: none;
+}
+
+.vjs-luxmty .vjs-icon-fullscreen-enter:before,
+.vjs-luxmty .vjs-fullscreen-control .vjs-icon-placeholder:before {
+  @include icon($vjs-fullscreen-enter);
+}
+
+.vjs-luxmty .vjs-icon-fullscreen-exit:before,
+.vjs-luxmty.vjs-fullscreen .vjs-fullscreen-control .vjs-icon-placeholder:before {
+  @include icon($vjs-fullscreen-exit);
+}

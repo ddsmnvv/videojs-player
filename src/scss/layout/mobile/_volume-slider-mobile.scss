@@ -1,0 +1,26 @@
+.vjs-luxmty.vjs-layout-small.vjs-volume-slider-mobile .vjs-volume-panel {
+
+  &.vjs-volume-panel-horizontal {
+
+    &.vjs-hover,
+    &:active,
+    &.vjs-slider-active {
+      width: 9em;
+    }
+
+    &.vjs-mute-toggle-only {
+      width: 3.5em;
+    }
+
+    display: flex;
+  }
+}
+
+
+.vjs-layout-small.vjs-has-started.vjs-volume-slider-mobile .vjs-volume-control {
+  display: flex;
+}
+
+.vjs-layout-small.vjs-has-started.vjs-volume-slider-mobile .vjs-volume-panel {
+  display: flex;
+}

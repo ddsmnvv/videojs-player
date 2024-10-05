@@ -1,0 +1,113 @@
+/*COLORS*/
+:root {
+  --primary-color: 240 100% 99%;
+  --secondary-color: 343 100% 35%;
+  --tertiary-color: 0 0% 1%;
+
+  --bg-primary: 0 0% 1%;
+  /*HSL code colors*/
+}
+
+/*Icons-Components Colors*/
+:root {
+  /*Play Control*/
+  --play-control: hsl(var(--secondary-color));
+
+  /*Big Play*/
+  --big-play: hsl(var(--secondary-color));
+  --big-play-border-color: hsl(var(--primary-color));
+  --bg-big-play: hsl(var(--bg-primary) / .45);
+
+  /*Volume*/
+  --mute: hsl(var(--secondary-color));
+  --volume-level: hsl(var(--primary-color));
+  --volume-level-circle: hsl(var(--secondary-color));
+
+  /*Fullscreen*/
+  --fullscreen: hsl(var(--secondary-color));
+
+  /*Picture In Picture*/
+  --pip-exit: hsl(var(--secondary-color));
+
+  /*Audio*/
+  --audio-description-menu-icon-color: #f8f8ff;
+
+  /*Captions*/
+  --cc-menu-icon-color: #f8f8ff;
+
+  /*Control Bar*/
+  --bg-control-bar: hsl(var(--bg-primary) / .8);
+
+  /*Live Control*/
+  --live-playing: red;
+  --live-paused: #888;
+
+  /*Scrollbar*/
+  --scrollbar: ghostwhite;
+
+  /*Time Control*/
+  --current-time: hsl(var(--primary-color));
+  --time-duration: hsl(var(--primary-color) / .6);
+  --time-divider: hsl(var(--secondary-color));
+
+  /*Progress Control*/
+  --bg-play-progress: hsl(var(--primary-color));
+  --bg-load-progress: hsl(var(--secondary-color) / .95);
+  --bg-load-progress-2: hsl(var(--secondary-color) / 0);
+  --circle-progress-color-1: hsl(var(--primary-color));
+  --circle-progress-color-2: hsl(var(--secondary-color));
+  --circle-progress-seeking-scrubbing: hsl(240 100% 99% / .38);
+
+  /*Slider*/
+  --bg-slider: rgba(115, 133, 159, 0.5);
+
+  /*Menu*/
+  --bg-menu-popup: hsl(var(--bg-primary) / .8);
+  --bg-menu-li-hover: hsl(215 19% 54% / .5);
+  --bg-menu-selected: hsl(var(--secondary-color));
+  --menu-selected-item-text: #f8f8ff;
+  --check-menu-selected-icon: #f8f8ff;
+
+  /*Loading Spinner*/
+  --border-color-loading-spinner: hsl(var(--primary-color) / 1);
+  --spin-color-1: hsl(var(--secondary-color));
+  --spin-color-2: hsl(var(--secondary-color));
+
+  /*Title Bar*/
+  --title-bar: hsl(240 100% 99%);
+  --title-bar-descr: hsl(240 100% 99% / .65);
+  --title-bar-border-color: hsl(var(--secondary-color));
+
+  /*Error Display*/
+  --error-display-text: ghostwhite;
+  --default-error-display-xicon: hsl(var(--secondary-color));
+
+  /*Track Settings*/
+  --bg-modal-dialog-trk-settings: hsl(var(--bg-primary) / .9);
+  --trk-settings-close-button: hsl(var(--secondary-color));
+  --trk-settings-legend-color: hsl(var(--secondary-color));
+  --trk-settings-label-color: hsl(var(--secondary-color));
+  --trk-settings-list-options: ghostwhite;
+  --trk-settings-list-border-color: #f8f8ff;
+  --trk-settings-done-reset-button: hsl(var(--secondary-color));
+  --trk-settings-done-reset-text-color: ghostwhite;
+
+  /*---PLUGINS---*/
+  /*Mobile UI*/
+  --mobile-ui-skip-buttons-color: hsl(var(--primary-color));
+
+  /*Contrib Quality Menu*/
+  --bg-hd-label-icon: hsl(var(--secondary-color));
+  --hd-label-icon-text: #f8f8ff;
+  --menu-sublabel-hd: hsl(var(--secondary-color));
+  --menu-selected-sublabel-hd: #f8f8ff;
+
+  /*HLS Quality Selector*/
+  --level-icon-hls-quality-selector: ghostwhite;
+  --bg-title-hls-quality-selector: hsl(var(--secondary-color));
+  --title-text-hls-quality-selector: ghostwhite;
+
+  /*Context Menu UI*/
+  --bg-context-menu: hsl(var(--bg-primary) / .7);
+  --context-menu-separator: hsl(var(--secondary-color));
+}

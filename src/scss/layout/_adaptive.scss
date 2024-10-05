@@ -1,0 +1,80 @@
+@use '../abstracts/mixins' as *;
+
+/*ADAPTIVE SECTION*/
+.vjs-luxmty {
+
+  &.vjs-layout-small {
+
+    .vjs-audio-button,
+    .vjs-remaining-time,
+    .vjs-skip-backward-5,
+    .vjs-skip-backward-10,
+    .vjs-skip-backward-30,
+    .vjs-skip-forward-5,
+    .vjs-skip-forward-10,
+    .vjs-skip-forward-30,
+    .vjs-logo-control-bar {
+      display: none;
+    }
+  }
+
+  &.vjs-layout-x-small {
+
+    .vjs-audio-button,
+    .vjs-skip-backward-5,
+    .vjs-skip-backward-10,
+    .vjs-skip-backward-30,
+    .vjs-skip-forward-5,
+    .vjs-skip-forward-10,
+    .vjs-skip-forward-30,
+    .vjs-time-divider,
+    .vjs-duration,
+    .vjs-remaining-time,
+    .vjs-playback-rate,
+    .vjs-subs-caps-button,
+    .vjs-volume-control,
+    .vjs-logo-control-bar {
+      display: none;
+    }
+  }
+
+  &.vjs-layout-tiny {
+
+    .vjs-audio-button,
+    .vjs-skip-backward-5,
+    .vjs-skip-backward-10,
+    .vjs-skip-backward-30,
+    .vjs-skip-forward-5,
+    .vjs-skip-forward-10,
+    .vjs-skip-forward-30,
+    .vjs-time-divider,
+    .vjs-duration,
+    .vjs-remaining-time,
+    .vjs-picture-in-picture-control,
+    .vjs-playback-rate,
+    .vjs-subs-caps-button,
+    .vjs-volume-control,
+    .vjs-quality-selector,
+    .vjs-hls-quality-selector,
+    .vjs-quality-menu-wrapper,
+    .vjs-logo-control-bar {
+      display: none
+    }
+  }
+
+  &.vjs-layout-x-small,
+  &.vjs-layout-tiny {
+
+    .vjs-progress-control {
+      display: flex;
+    }
+  }
+
+  &.vjs-layout-x-small {
+
+    .vjs-custom-control-spacer {
+      display: flex;
+      flex: 1 1 auto;
+    }
+  }
+}

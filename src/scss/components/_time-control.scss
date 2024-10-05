@@ -1,0 +1,65 @@
+@use '../abstracts/mixins' as m;
+@use '../base/colors' as *;
+@use '../base/font' as *;
+@use '../components/variables' as v;
+
+/*TIME CONTROL*/
+.vjs-luxmty {
+  .vjs-time-control {
+    flex: none;
+    font-size: var(--fs-time-control);
+    font-weight: var(--fw-time-control);
+    line-height: 0;
+    width: auto;
+    height: auto;
+    min-width: v.$spacing-time-control;
+    padding: v.$padding-time-control;
+  }
+
+  .vjs-time-control,
+  .vjs-time-divider,
+  .vjs-time-divider div span,
+  .vjs-current-time,
+  .vjs-duration,
+  .vjs-remaining-time {
+    @include m.display-flex(flex, center, center);
+    @include m.flex(none);
+  }
+
+  .vjs-current-time {
+    color: var(--current-time);
+  }
+
+  .vjs-time-divider {
+    color: var(--time-divider);
+    padding: v.$padding-time-divider;
+  }
+
+  .vjs-time-divider div span {
+    font-size: var(--fs-time-divider);
+  }
+
+  .vjs-duration {
+    color: var(--time-duration);
+  }
+
+  .vjs-remaining-time {
+    display: none;
+  }
+
+}
+
+.vjs-luxmty {
+
+  &.vjs-layout-small,
+  &.vjs-layout-x-small,
+  &.vjs-layout-tiny {
+    .vjs-time-control {
+      display: flex;
+    }
+  }
+}
+
+.vjs-luxmty.vjs-live .vjs-time-control {
+  display: none;
+}

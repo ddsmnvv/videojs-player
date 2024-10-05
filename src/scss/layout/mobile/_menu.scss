@@ -1,0 +1,19 @@
+@use '../../components/variables' as v;
+
+// MENU POPUP
+.vjs-luxmty {
+  &.vjs-layout-small {
+    .vjs-menu-button-popup .vjs-menu {
+      bottom: calc(v.$height-control-bar-mobile + -2em);
+    }
+  }
+}
+
+// MENU POPUP
+.vjs-luxmty {
+  &.vjs-layout-small {
+    .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+      bottom: v.$bottom-menu-popup;
+    }
+  }
+}

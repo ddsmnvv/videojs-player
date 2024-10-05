@@ -1,0 +1,48 @@
+@use '../abstracts/mixins' as m;
+@use "../base/colors" as *;
+@use "../base/font" as *;
+@use "../base/options" as *;
+@use '../components/variables' as v;
+
+/*ERROR DISPLAY*/
+//Error Text
+.vjs-luxmty.vjs-error .vjs-error-display .vjs-modal-dialog-content {
+  @include m.display-flex(flex, flex-start, flex-end);
+  text-align: right;
+  font-size: var(--fs-error-disp);
+  font-weight: var(--fw-error-disp);
+  z-index: 200;
+  color: var(--error-display-text);
+}
+
+//Deafult error
+.vjs-luxmty.vjs-error .vjs-error-display:before {
+  color: var(--default-error-display-xicon);
+  content: 'X';
+  font-family: var(--font);
+  font-size: 4em;
+  left: 0;
+  line-height: 1;
+  margin-top: -0.5em;
+  position: absolute;
+  text-shadow: 0.05em 0.05em 0.1em #000;
+  text-align: center;
+  top: 50%;
+  vertical-align: middle;
+  width: 100%;
+  visibility: visible;
+}
+
+//Custom Image Error Display
+.vjs-luxmty.vjs-error .vjs-error-display:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: var(--error-display-image);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}

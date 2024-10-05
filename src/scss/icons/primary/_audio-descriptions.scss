@@ -1,0 +1,6 @@
+@use '../../abstracts/icon-code' as *;
+
+.vjs-luxmty .vjs-icon-audio-description:before,
+.vjs-luxmty .vjs-descriptions-button .vjs-icon-placeholder:before {
+  @include icon($vjs-audio-description);
+}

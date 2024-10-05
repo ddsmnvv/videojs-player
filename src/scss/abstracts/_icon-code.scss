@@ -1,0 +1,68 @@
+//Video JS Family
+$vjs-play: "\f101";
+$vjs-play-circle: "\f102";
+$vjs-pause: "\f103";
+$vjs-volume-mute: "\f104";
+$vjs-volume-low: "\f105";
+$vjs-volume-mid: "\f106";
+$vjs-volume-high: "\f107";
+$vjs-fullscreen-enter: "\f108";
+$vjs-fullscreen-exit: "\f109";
+$vjs-spinner: "\f10a";
+$vjs-subtitles: "\f10b";
+$vjs-captions: "\f10c";
+$vjs-hd: "\f10d";
+$vjs-chapters: "\f10e";
+$vjs-downloading: '\f10f';
+$vjs-file-download: '\f110';
+$vjs-file-download-done: '\f111';
+$vjs-file-download-off: '\f112';
+$vjs-share: "\f113";
+$vjs-gear: "\f114";
+$vjs-square: '\f115';
+$vjs-circle: "\f116";
+$vjs-circle-outline: "\f117";
+$vjs-circle-inner: "\f118";
+$vjs-cancel: "\f119";
+$vjs-repeat: "\f11a";
+$vjs-replay: "\f11b";
+$vjs-replay-5: '\f11c';
+$vjs-replay-10: '\f11d';
+$vjs-replay-30: '\f11e';
+$vjs-forward-5: '\f11f';
+$vjs-forward-10: '\f120';
+$vjs-forward-30: '\f121';
+$vjs-audio: "\f122";
+$vjs-next-item: "\f123";
+$vjs-previous-item: "\f124";
+$vjs-shuffle: '\f125';
+$vjs-cast: '\f126';
+$vjs-picture-in-picture-enter: "\f127";
+$vjs-picture-in-picture-exit: "\f128";
+$vjs-facebook: "\f129"; //Social Icons//
+$vjs-linkedin: "\f12a"; //Social Icons//
+$vjs-twitter: "\f12b"; //Social Icons//
+$vjs-tumblr: "\f12c"; //Social Icons//
+$vjs-pinterest: "\f12d"; //Social Icons//
+$vjs-audio-description: "\f12e";
+$vjs-menu-selected-icon: "\f116";
+$live-icon: "\f116";
+
+// Bootstrap Icons Family
+$bi-circle-rec-fill: "\f517";
+$bi-circle-inner: "\f518";
+$bi-cancel-single: "\f659";
+$bi-cancel: "\f623";
+$bi-cancel-fill: "\f622";
+$bi-twitter: "\f8db"; //Social Icons//
+$menu-selected-icon: "\f26a";
+$icon-quality-selector-level: "\f514";
+$mobile-ui-rewind-icon: "\f818";
+$mobile-ui-fast-forward-icon: "\f7f3";
+$playback-rate-icon: "\f292";
+
+@mixin icon($content:null, $color:null) {
+  content: $content;
+  color: $color;
+}
+

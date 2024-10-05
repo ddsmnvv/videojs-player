@@ -1,0 +1,21 @@
+@use "../abstracts/mixins" as *;
+@use "../base/colors" as *;
+
+/*SLIDER*/
+.vjs-luxmty .vjs-slider {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 0.45em 0 0.45em;
+  @include user-select(none);
+  background-color: var(--bg-slider);
+ }
+
+.vjs-luxmty .vjs-slider.disabled {
+  cursor: default;
+}
+
+.vjs-luxmty .vjs-slider:focus {
+  text-shadow: 0em 0em 1em #f8f8ff;
+  box-shadow: 0 0 1em #f8f8ff;
+}

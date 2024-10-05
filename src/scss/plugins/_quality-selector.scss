@@ -1,0 +1,52 @@
+@use '../abstracts/icon-code' as *;
+@use '../base/colors' as *;
+@use '../base/font' as *;
+
+//HLS QUALITY SELECTOR
+.vjs-luxmty .vjs-control.vjs-hls-quality-selector {
+  width: auto;
+  min-width: var(--icon-spacing);
+}
+
+.vjs-luxmty .vjs-control .vjs-hls-quality-selector .vjs-menu-button {
+  width: auto;
+}
+
+.vjs-luxmty .vjs-hls-quality-selector .vjs-menu ul li.vjs-menu-title {
+  background-color: var(--bg-title-hls-quality-selector);
+  color: var(--title-text-hls-quality-selector);
+  padding-left: .3em;
+  padding-right: 1.2em;
+}
+
+.vjs-luxmty .vjs-hls-quality-selector .vjs-menu ul li.vjs-menu-title::before {
+  position: relative;
+  font-family: var(--icon-family);
+  @include icon($icon-quality-selector-level);
+  color: var(--level-icon-hls-quality-selector);
+  right: .5em;
+}
+
+
+//NORMAL QUALITY SELECTOR
+.vjs-luxmty .vjs-quality-selector .vjs-menu-button {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.vjs-luxmty .vjs-quality-selector .vjs-icon-placeholder {
+  font-family: var(--icon-family);
+  font-weight: normal;
+  font-style: normal;
+  font-size: var(--fs-gear-quality);
+}
+
+.vjs-luxmty .vjs-quality-selector .vjs-icon-placeholder::before {
+  @include icon($vjs-gear);
+}
+
+.vjs-luxmty .vjs-quality-changing .vjs-big-play-button {
+  display: none;
+}

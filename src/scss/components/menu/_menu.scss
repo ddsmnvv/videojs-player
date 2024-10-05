@@ -1,0 +1,41 @@
+@use '../../base/font';
+@use '../../base/colors';
+
+/*MENU*/
+.vjs-luxmty .vjs-menu-button .vjs-hidden {
+  display: block !important;
+  transform: scale(0);
+}
+
+.vjs-menu-button {
+  cursor: pointer;
+}
+
+.vjs-menu-button.vjs-disabled {
+  cursor: default;
+}
+
+.vjs-workinghover .vjs-menu-button.vjs-disabled:hover .vjs-menu {
+  display: none;
+}
+
+.vjs-luxmty .vjs-menu .vjs-menu-content {
+  display: block;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font);
+  overflow: auto;
+}
+
+.vjs-menu .vjs-menu-content > * {
+  box-sizing: border-box;
+}
+
+.vjs-scrubbing .vjs-control.vjs-menu-button:hover .vjs-menu {
+  display: none;
+}
+
+.vjs-luxmty .vjs-lock-showing {
+  display: block;
+  transform: scale(1) !important;
+}

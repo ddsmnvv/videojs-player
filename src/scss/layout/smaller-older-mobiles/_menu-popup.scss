@@ -1,0 +1,20 @@
+@use '../../components/variables' as v;
+
+// MENU POPUP
+.vjs-luxmty {
+  &.vjs-layout-x-small,
+  &.vjs-layout-tiny {
+    .vjs-menu-button-popup .vjs-menu {
+      bottom: calc(4em + -2em);
+    }
+  }
+}
+
+.vjs-luxmty {
+  &.vjs-layout-x-small,
+  &.vjs-layout-tiny {
+    .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+      bottom: v.$bottom-menu-popup;
+    }
+  }
+}

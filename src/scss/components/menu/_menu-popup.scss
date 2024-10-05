@@ -1,0 +1,57 @@
+@use '../../abstracts/mixins' as m;
+@use '../../abstracts/icon-code' as *;
+@use '../../base/font' as *;
+@use '../../base/colors' as *;
+@use '../../components/variables' as v;
+
+.vjs-luxmty .vjs-menu-button-popup .vjs-menu {
+  display: block;
+  position: absolute;
+  bottom: calc(v.$height-control-bar + -2em);/*Not change this*/
+  left: -3em; 
+  width: 10em;
+  height: 100%;
+  margin-bottom: unset;
+  border-top-color: var(--bg-menu-popup);
+  transform: scale(0);
+  transition: all 0.3s;
+  transform-origin: bottom center;
+  z-index: 200;
+}
+
+.vjs-luxmty .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+  position: absolute;
+  bottom: v.$bottom-menu-popup; /*Modifify this if you want modify the top/bottom position of menu popup*/
+  background-color: var(--bg-menu-popup);
+  width: 100%;
+  max-height: 15em;
+}
+
+.vjs-luxmty .vjs-pip-window .vjs-menu-button-popup .vjs-menu {
+  left: unset;
+  right: 1em;
+}
+
+.vjs-layout-large .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
+.vjs-layout-x-large .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
+.vjs-layout-huge .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+  max-height: 25em;
+}
+
+.vjs-layout-medium .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+  max-height: 14em;
+}
+
+.vjs-layout-small .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+  max-height: 11em;
+}
+
+.vjs-layout-x-small .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+  max-height: 9em;
+}
+
+.vjs-workinghover .vjs-menu-button-popup.vjs-hover .vjs-menu,
+.vjs-menu-button-popup .vjs-menu.vjs-lock-showing {
+  display: block;
+}
+

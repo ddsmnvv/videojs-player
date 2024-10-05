@@ -1,0 +1,66 @@
+@use '../../abstracts/icon-code' as *;
+@use '../../base/colors';
+@use '../../base/font';
+@use '../../components/variables' as v;
+
+.vjs-luxmty .vjs-menu li {
+  display: flex;
+  justify-content: center;
+  color: ghostwhite;
+  list-style: none;
+  font-size: var(--fs-menu-list);
+  font-weight: var(--fw-menu-li);
+  text-transform: lowercase;
+  text-align: center;
+  line-height: v.$line-height-menu-list;
+  padding: v.$padding-menu-list;
+  width: auto;
+}
+
+.vjs-luxmty .vjs-menu li.vjs-menu-item:focus {
+  background-color: transparent;
+}
+
+.vjs-luxmty .vjs-menu li.vjs-menu-item:hover,
+.vjs-luxmty .js-focus-visible .vjs-menu li.vjs-menu-item:hover {
+  background-color: var(--bg-menu-li-hover);
+}
+
+.vjs-luxmty .vjs-menu li.vjs-selected,
+.vjs-luxmty .vjs-menu li.vjs-selected:focus,
+.vjs-luxmty .vjs-menu li.vjs-selected:hover,
+.vjs-luxmty .js-focus-visible .vjs-menu li.vjs-selected:hover {
+  color: var(--menu-selected-item-text);
+  background-color: var(--bg-menu-selected);
+  padding-right: 2em;
+  padding-left: 2.08em;
+}
+
+.vjs-luxmty .vjs-menu li.vjs-selected:before {
+  font-family: var(--icon-family);
+  font-size: .8em;
+  font-weight: bolder;
+  @include icon($menu-selected-icon);
+  color: var(--check-menu-selected-icon);
+  padding-right: 1em;
+  padding-left: 0;
+  text-align: left;
+  margin-left: -2.15em;
+  line-height: 1.7em;
+}
+
+.vjs-luxmty .vjs-menu *:not(.vjs-selected):focus:not(:focus-visible),
+.vjs-luxmty .js-focus-visible .vjs-menu *:not(.vjs-selected):focus:not(.focus-visible) {
+  background: none;
+}
+
+.vjs-luxmty .vjs-menu li.vjs-menu-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: var(--fs-menu-title);
+  font-weight: var(--fw-menu-title);
+  line-height: 2em;
+  padding: v.$padding-menu-list-title;
+  margin: 0em 0 0.3em 0;
+  cursor: default;
+}

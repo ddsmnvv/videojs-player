@@ -1,0 +1,19 @@
+@use '../../abstracts/icon-code' as *;
+@use '../../base/font' as *;
+
+// PICTURE IN PICTURE ICONS
+.vjs-luxmty .vjs-picture-in-picture-control {
+  font-size: var(--fs-pip-control);
+}
+
+.vjs-luxmty .vjs-icon-picture-in-picture-enter:before,
+.vjs-luxmty .vjs-picture-in-picture-control .vjs-icon-placeholder:before {
+  @include icon($vjs-picture-in-picture-enter);
+}
+
+.vjs-luxmty .vjs-icon-picture-in-picture-exit:before,
+.vjs-luxmty.vjs-picture-in-picture .vjs-picture-in-picture-control .vjs-icon-placeholder:before {
+  @include icon($vjs-picture-in-picture-exit);
+  color: var(--pip-exit);
+  font-size: var(--fs-pip-exit);
+}

@@ -1,0 +1,9 @@
+@use '../../abstracts/icon-code' as *;
+
+.vjs-luxmty .vjs-icon-next-item:before {
+  @include icon($vjs-next-item);
+}
+
+.vjs-luxmty .vjs-icon-previous-item:before {
+  @include icon($vjs-previous-item);
+}

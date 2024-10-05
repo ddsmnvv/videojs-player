@@ -1,0 +1,11 @@
+@use '../../abstracts/icon-code' as *;
+@use '../../base/font' as *;
+
+/*GEAR AND HD ICON*/
+.vjs-luxmty .vjs-icon-cog {
+  font-size: var(--fs-gear-quality);
+}
+
+.vjs-luxmty .vjs-icon-cog:before {
+  @include icon($vjs-gear);
+}

@@ -1,0 +1,46 @@
+@use "../abstracts/mixins" as *;
+@use '../base/font' as *;
+@use '../base/options' as *;
+
+/*CONTROL*/
+.vjs-luxmty .vjs-control {
+  position: relative;
+  text-align: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: var(--icon-spacing);
+  @include flex(none);
+}
+
+.vjs-luxmty .vjs-control:before {
+  font-family: var(--icon-family);
+  font-size: var(--icons-size);
+}
+
+.vjs-luxmty .vjs-control.vjs-visible-text {
+  width: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.vjs-button > .vjs-icon-placeholder:before {
+  font-family: var(--icon-family);
+  font-size: var(--icons-size);
+  //line-height: 1.67;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vjs-button > .vjs-icon-placeholder {
+  display: block;
+}
+
+.vjs-luxmty .vjs-control:focus:before,
+.vjs-luxmty .vjs-control:hover:before,
+.vjs-luxmty .vjs-control:focus {
+  text-shadow: 0em 0em 1em transparent;
+}
+

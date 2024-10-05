@@ -1,0 +1,133 @@
+@use "../abstracts/icon-code" as *;
+@use "../base/colors" as *;
+@use "../base/font" as *;
+
+/*TEXT TRACK SETTINGS*/
+.vjs-modal-dialog.vjs-text-track-settings {
+  background-color: var(--bg-modal-dialog-trk-settings);
+  height: 100%;
+  z-index: 999999999;
+}
+
+.vjs-luxmty .vjs-modal-dialog.vjs-text-track-settings .vjs-close-button {
+  color: var(--trk-settings-close-button);
+  cursor: pointer;
+  text-shadow: none;
+}
+
+.vjs-luxmty .vjs-modal-dialog.vjs-text-track-settings .vjs-close-button:before {
+  @include icon($bi-cancel-single);
+  color: ghostwhite;
+  font-weight: bolder;
+  font-size: 1.3em;
+  padding: .4em .4em .35em .35em;
+}
+
+.vjs-error .vjs-text-track-settings {
+  display: none;
+}
+
+.vjs-text-track-settings .vjs-modal-dialog-content {
+  display: table;
+}
+
+.vjs-text-track-settings .vjs-track-settings-colors,
+.vjs-text-track-settings .vjs-track-settings-font,
+.vjs-text-track-settings .vjs-track-settings-controls {
+  display: table-cell;
+}
+
+.vjs-text-track-settings .vjs-track-settings-controls {
+  text-align: right;
+  vertical-align: bottom;
+}
+
+@supports (display: grid) {
+  .vjs-text-track-settings .vjs-modal-dialog-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 20px 24px 0px 24px;
+  }
+
+  .vjs-track-settings-controls .vjs-default-button {
+    margin-bottom: 20px;
+  }
+
+  .vjs-text-track-settings .vjs-track-settings-controls {
+    grid-column: 1 / -1;
+  }
+
+  .vjs-layout-small .vjs-text-track-settings .vjs-modal-dialog-content,
+  .vjs-layout-x-small .vjs-text-track-settings .vjs-modal-dialog-content,
+  .vjs-layout-tiny .vjs-text-track-settings .vjs-modal-dialog-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vjs-luxmty .vjs-text-track-settings select {
+  font-size: inherit;
+}
+
+.vjs-luxmty .vjs-track-setting>select {
+  color: var(--trk-settings-list-options);
+  background: transparent;
+  border: .02em solid var(--trk-settings-list-border-color);
+}
+
+.vjs-luxmty .vjs-text-track-settings fieldset {
+  margin: 10px;
+  padding: 3px;
+  border: none;
+}
+
+.vjs-luxmty .vjs-text-track-settings fieldset span {
+  display: inline-block;
+  padding: 0 .6em .8em;
+}
+
+
+.vjs-luxmty .vjs-text-track-settings fieldset span>select {
+  max-width: 7em;
+  height: auto;
+  background: transparent;
+  border: .02em solid var(--trk-settings-list-border-color);
+  color: var(--trk-settings-list-options);
+}
+
+.vjs-luxmty .vjs-text-track-settings legend {
+  color: var(--trk-settings-legend-color);
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.vjs-luxmty .vjs-text-track-settings .vjs-label {
+  color: var(--trk-settings-label-color);
+  margin: 0 0.5em 0.5em 0;
+  font-weight: bold;
+}
+
+.vjs-luxmty .vjs-track-settings-controls button:focus,
+.vjs-luxmty .vjs-track-settings-controls button:active {
+  outline-style: solid;
+  outline-width: medium;
+  background-image: linear-gradient(0deg, var(--trk-settings-done-reset-button) 100%, hsl(var(--secondary-color)) 100%);
+  color: ghostwhite;
+}
+
+.vjs-luxmty .vjs-track-settings-controls button:hover {
+  background-image: linear-gradient(-180deg, var(--trk-settings-done-reset-button) 100%, #fff 100%);
+  color: ghostwhite;
+}
+
+.vjs-luxmty .vjs-track-settings-controls button {
+  background-image: linear-gradient(-180deg, var(--trk-settings-done-reset-button) 100%, #fff 100%);
+  border-radius: .3em;
+  cursor: pointer;
+  color: var(--trk-settings-done-reset-text-color);
+  font-family: var(--font);
+}
+
+.vjs-track-settings-controls .vjs-default-button {
+  margin-right: 1em;
+}

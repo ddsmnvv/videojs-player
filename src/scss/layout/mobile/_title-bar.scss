@@ -1,0 +1,10 @@
+@use '../../base/font' as *;
+
+.vjs-luxmty {
+  &.vjs-layout-small {
+    .vjs-title-bar {
+      font-size: var(--fs-title-bar-mobile);
+    }
+  }
+}
+
