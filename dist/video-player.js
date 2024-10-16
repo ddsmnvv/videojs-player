@@ -1,44 +1,96 @@
 let seasons = [
   {
-      seasonNumber: 1,
-      title: "Сезон 1",
-      description: "Первый сезон, в котором начинается история.",
-      episodes: [
-          {
-              episodeNumber: 1,
-              title: "Эпизод 1: Название эпизода 1",
-              description: "Краткое описание первого эпизода.",
-              duration: "25 мин",
-              releaseDate: "1 января 2020",
-              videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-              opening: {
-                  start: 10,
-                  end: 20
-              },
-              ending: [
-                  { start: 180, end: 190 }, // Первый эндинг (3:00 - 3:10)
-                  { start: 240, end: 250 }  // Второй эндинг (4:00 - 4:10)
-              ]
-          },
-          {
-              episodeNumber: 2,
-              title: "Эпизод 2: Название эпизода 2",
-              description: "Краткое описание второго эпизода.",
-              duration: "30 мин",
-              releaseDate: "8 января 2020",
-              videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-              opening: {
-                  start: 0,
-                  end: 10
-              },
-              ending: [
-                  { start: 120, end: 130 }, // Первый эндинг (2:00 - 2:10)
-                  { start: 180, end: 190 }  // Второй эндинг (3:00 - 3:10)
-              ]
-          }
-      ]
+    seasonNumber: 1,
+    title: "Название первого сезона",
+    description: "Первый сезон, в котором начинается история.",
+    episodes: [
+      {
+        episodeNumber: 1,
+        title: "Эпизод 1: Название эпизода 1",
+        description: "Краткое описание первого эпизода.",
+        duration: "25 мин",
+        releaseDate: "1 января 2020",
+        videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        opening: {
+          start: 10,
+          end: 20
+        },
+        ending: [
+          { start: 180, end: 190 }, // Первый эндинг (3:00 - 3:10)
+          { start: 240, end: 250 }  // Второй эндинг (4:00 - 4:10)
+        ]
+      },
+      {
+        episodeNumber: 2,
+        title: "Эпизод 2: Название эпизода 2",
+        description: "Краткое описание второго эпизода.",
+        duration: "30 мин",
+        releaseDate: "8 января 2020",
+        videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        opening: {
+          start: 0,
+          end: 10
+        },
+        ending: [
+          { start: 120, end: 130 }, // Первый эндинг (2:00 - 2:10)
+          { start: 180, end: 190 }  // Второй эндинг (3:00 - 3:10)
+        ]
+      }
+    ]
+  },
+  {
+    seasonNumber: 2,
+    title: "Название второго сезона",
+    description: "Второй сезон с новыми историями.",
+    episodes: [
+      {
+        episodeNumber: 1,
+        title: "Эпизод 1: Название эпизода 1",
+        description: "Описание первого эпизода второго сезона.",
+        duration: "28 мин",
+        releaseDate: "5 января 2021",
+        videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        opening: {
+          start: 5,
+          end: 15
+        },
+        ending: [
+          { start: 150, end: 160 }, // Первый эндинг (2:30 - 2:40)
+          { start: 200, end: 210 }  // Второй эндинг (3:20 - 3:30)
+        ]
+      }
+    ]
   }
 ];
+
+let selectedSeason = seasons[0];
+
+let playlist = [
+  {
+    image: "https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg",
+    name: "Эпизод 1: Название эпизода 1",
+    description: "Краткое описание первого эпизода.",
+    video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  },
+  {
+    image: "https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg",
+    name: "Эпизод 1: Название эпизода 1",
+    description: "Краткое описание первого эпизода.",
+    video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  },
+  {
+    image: "https://i1.sndcdn.com/artworks-000005010194-jwzy1c-t500x500.jpg",
+    name: "Эпизод 2: Название эпизода 2",
+    description: "Краткое описание второго эпизода.",
+    video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+  },
+  {
+    image: "https://i1.sndcdn.com/artworks-000005010194-jwzy1c-t500x500.jpg",
+    name: "Эпизод 2: Название эпизода 2",
+    description: "Краткое описание второго эпизода.",
+    video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+  }
+]
 
 var player = videojs(document.querySelector('video-js'), {
   controlBar: {
@@ -89,6 +141,51 @@ var player = videojs(document.querySelector('video-js'), {
 	
 });
 
+var seasonSelectorContainer = document.createElement('div');
+seasonSelectorContainer.className = 'vjs-season-selector-container';
+
+var seasonButton = document.createElement('button');
+seasonButton.className = 'vjs-season-button';
+seasonButton.innerHTML = selectedSeason.seasonNumber + " сезон " + ' &#x25BC;';
+
+var seasonMenu = document.createElement('ul');
+seasonMenu.className = 'vjs-season-menu';
+
+seasons.forEach(season => {
+  var menuItem = document.createElement('li');
+  menuItem.className = 'vjs-season-menu-item';
+  menuItem.innerHTML = season.seasonNumber + " сезон";
+  
+  menuItem.addEventListener('click', function() {
+    selectedSeason = season;
+    seasonButton.innerHTML = season.seasonNumber + " сезон " + ' &#x25BC;';
+    seasonMenu.classList.remove('visible');
+
+    updateSeasonDetails(selectedSeason);
+  });
+  
+  seasonMenu.appendChild(menuItem);
+});
+
+seasonSelectorContainer.addEventListener('click', function() {
+  if (seasonMenu.classList.contains('visible')) {
+    seasonMenu.classList.remove('visible');
+  } else {
+    seasonMenu.classList.add('visible');
+  }
+});
+
+seasonSelectorContainer.appendChild(seasonButton);
+seasonSelectorContainer.appendChild(seasonMenu);
+player.controlBar.el().appendChild(seasonSelectorContainer);
+
+function updateSeasonDetails(season) {
+  player.titleBar.update({
+    title: ''+ season.seasonNumber +' сезон | '+ season.title,
+    description: season.episodes[0].title
+  })
+}
+
 // Кнопка для пропуска опенинга
 var openingButton = document.createElement('button');
 openingButton.innerHTML = 'Пропустить опенинг'; 
@@ -101,7 +198,6 @@ openingButton.style.zIndex = '1000';
 openingButton.style.display = 'none'; 
 
 document.querySelector('.video-js').appendChild(openingButton);
-
 
 var endingButton = document.createElement('button');
 endingButton.innerHTML = 'Пропустить эндинг'; 
@@ -171,14 +267,13 @@ endingButton.addEventListener('click', function() {
   }
 });
 
-var myButton = player.controlBar.addChild('button');
+var screenshotButton = player.controlBar.addChild('button');
 
 // Присваиваем классы для стилизации
-myButton.addClass("vjs-screenshot-button");
-myButton.addClass("html-classname");
-myButton.el().innerHTML = "Сделать скриншот";
+screenshotButton.addClass("vjs-icon-button");
+screenshotButton.el().innerHTML = "<img src='../src/images/camera.svg' alt='Сделать скриншот'>";
 // Добавляем обработчик клика
-myButton.el().onclick = function() {
+screenshotButton.el().onclick = function() {
   var videoElement = player.el().getElementsByTagName('video')[0];
   var canvas = document.createElement('canvas');
   canvas.width = videoElement.videoWidth;
@@ -251,9 +346,216 @@ player.on('loadedmetadata', function() {
 
 // Title Bar
 player.titleBar.update({
-  title: 'Американский папаша',
-  description: '1 сезон 3 серия'
+  title: ''+ selectedSeason.seasonNumber +' сезон | '+ selectedSeason.title,
+  description: selectedSeason.episodes[0].title
 })
+
+// Переменная для хранения текущего индекса видео
+let currentIndex = 0;
+
+// Функция для обновления активного видео в плеере
+function updateActiveVideo(index) {
+  if (index >= 0 && index < playlist.length) {
+    currentIndex = index;
+    const video = playlist[index];
+    player.src({ type: "video/mp4", src: video.video });
+    player.poster(video.image); // Обновляем постер
+    player.currentTime(0);
+    player.play();
+    highlightActiveVideo();
+  }
+}
+
+// Создаем меню плейлиста
+var playlistMenu = document.createElement('div');
+playlistMenu.className = 'vjs-playlist-menu';
+
+// Добавляем кнопку плейлиста в controlBar
+var playlistButton = player.controlBar.addChild('button');
+playlistButton.addClass('vjs-icon-button');
+playlistButton.el().innerHTML = '<img src="../src/images/season.svg" alt="Открыть меню плейлиста">';
+playlistButton.el().addEventListener('click', () => {
+  document.querySelector('.player-container').classList.toggle('active-playlist');
+  playlistMenu.classList.toggle('active');
+});
+
+// Создание навигации плейлиста
+var playlistMenuNav = document.createElement('div');
+playlistMenuNav.className = 'vjs-playlist-menu-nav';
+
+// Поле поиска
+var playlistMenuNavSearch = document.createElement('input');
+playlistMenuNavSearch.className = 'vjs-playlist-menu-nav-search';
+playlistMenuNavSearch.placeholder = 'Поиск';
+
+// Обработчик поиска
+playlistMenuNavSearch.addEventListener('input', function() {
+  const searchTerm = playlistMenuNavSearch.value.toLowerCase();
+  const filteredPlaylist = playlist.filter(item => item.name.toLowerCase().includes(searchTerm));
+  renderPlaylist(filteredPlaylist);
+});
+
+// Кнопки навигации
+var playlistMenuNavFirstVideoButton = document.createElement('button');
+playlistMenuNavFirstVideoButton.className = 'vjs-playlist-menu-nav-btn';
+playlistMenuNavFirstVideoButton.innerHTML = "<img src='../src/images/skip-button.svg' alt='Первое видео'/>";
+playlistMenuNavFirstVideoButton.title = "Первое видео";
+
+var playlistMenuNavPrevVideoButton = document.createElement('button');
+playlistMenuNavPrevVideoButton.className = 'vjs-playlist-menu-nav-btn rotate';
+playlistMenuNavPrevVideoButton.innerHTML = "<img src='../src/images/next-button.svg' alt='Предыдущее видео'/>";
+playlistMenuNavPrevVideoButton.title = "Предыдущее видео";
+
+var playlistMenuNavNextVideoButton = document.createElement('button');
+playlistMenuNavNextVideoButton.className = 'vjs-playlist-menu-nav-btn';
+playlistMenuNavNextVideoButton.innerHTML = "<img src='../src/images/next-button.svg' alt='Следующее видео'/>";
+playlistMenuNavNextVideoButton.title = "Следующее видео";
+
+var playlistMenuNavLastVideoButton = document.createElement('button');
+playlistMenuNavLastVideoButton.className = 'vjs-playlist-menu-nav-btn rotate';
+playlistMenuNavLastVideoButton.innerHTML = "<img src='../src/images/skip-button.svg' alt='Последнее видео'/>";
+playlistMenuNavLastVideoButton.title = "Последнее видео";
+
+// Добавляем обработчики событий для кнопок навигации
+playlistMenuNavFirstVideoButton.addEventListener('click', () => {
+  updateActiveVideo(0);
+});
+
+playlistMenuNavPrevVideoButton.addEventListener('click', () => {
+  let newIndex = currentIndex - 1;
+  if (newIndex < 0) newIndex = playlist.length - 1; // Цикличный переход к последнему видео
+  updateActiveVideo(newIndex);
+});
+
+playlistMenuNavNextVideoButton.addEventListener('click', () => {
+  let newIndex = currentIndex + 1;
+  if (newIndex >= playlist.length) newIndex = 0; // Цикличный переход к первому видео
+  updateActiveVideo(newIndex);
+});
+
+playlistMenuNavLastVideoButton.addEventListener('click', () => {
+  updateActiveVideo(playlist.length - 1);
+});
+
+// Добавляем элементы в навигацию
+playlistMenuNav.appendChild(playlistMenuNavSearch);
+playlistMenuNav.appendChild(playlistMenuNavFirstVideoButton);
+playlistMenuNav.appendChild(playlistMenuNavPrevVideoButton);
+playlistMenuNav.appendChild(playlistMenuNavNextVideoButton);
+playlistMenuNav.appendChild(playlistMenuNavLastVideoButton);
+
+playlistMenu.appendChild(playlistMenuNav);
+
+// Контейнер для списка видео
+var playlistContainer = document.createElement('div');
+playlistContainer.className = 'vjs-playlist-container';
+
+// Функция для рендеринга плейлиста
+function renderPlaylist(filteredPlaylist) {
+  // Очищаем текущий плейлист
+  playlistContainer.innerHTML = '';
+  
+  filteredPlaylist.forEach((video, index) => {
+    var playlistVideoItem = document.createElement('div');
+    playlistVideoItem.className = 'vjs-playlist-video';
+    playlistVideoItem.dataset.index = playlist.indexOf(video); // Хранение оригинального индекса
+
+    var playlistVideoItemImage = document.createElement('img');
+    playlistVideoItemImage.src = video.image;
+    playlistVideoItemImage.alt = "Обложка видео";
+
+    var playlistVideoItemDescription = document.createElement('div');
+    var playlistVideoItemDescriptionTitle = document.createElement('h3');
+    playlistVideoItemDescriptionTitle.textContent = video.name;
+    var playlistVideoItemDescriptionDescription = document.createElement('p');
+    playlistVideoItemDescriptionDescription.textContent = video.description;
+    playlistVideoItemDescription.appendChild(playlistVideoItemDescriptionTitle);
+    playlistVideoItemDescription.appendChild(playlistVideoItemDescriptionDescription);
+
+    playlistVideoItem.appendChild(playlistVideoItemImage);
+    playlistVideoItem.appendChild(playlistVideoItemDescription);
+
+    // Добавляем логику клика для смены видео
+    playlistVideoItem.addEventListener('click', function() {
+      const originalIndex = parseInt(this.dataset.index);
+      updateActiveVideo(originalIndex);
+      // Закрываем меню после выбора
+      playlistMenu.classList.remove('active');
+      document.querySelector('.player-container').classList.remove('active-playlist');
+    });
+
+    playlistContainer.appendChild(playlistVideoItem);
+  });
+
+  highlightActiveVideo();
+}
+
+// Функция для подсветки активного видео в списке
+function highlightActiveVideo() {
+  document.querySelectorAll('.vjs-playlist-video').forEach(item => {
+    item.classList.remove('active');
+    const index = parseInt(item.dataset.index);
+    if (index === currentIndex) {
+      item.classList.add('active');
+    }
+  });
+}
+
+// Первоначальный рендер плейлиста
+renderPlaylist(playlist);
+playlistMenu.appendChild(playlistContainer);
+
+// Добавляем меню в player
+document.querySelector('.video-js').appendChild(playlistMenu);
+
+// Обновление классов для первого элемента
+highlightActiveVideo();
+
+// Автоматический переход к следующему видео по окончании текущего
+player.on('ended', function() {
+  let newIndex = currentIndex + 1;
+  if (newIndex >= playlist.length) newIndex = 0;
+  updateActiveVideo(newIndex);
+});
+
+var feedbackModal = document.createElement('div');
+
+feedbackModal.innerHTML = 
+'<form type="POST">' +
+'<h1>Оставьте жалобу</h1>' +
+'<textarea class="feedback-textarea" placeholder="Содержимое жалобы"></textarea>' +
+'<div class="feedback-buttons">'+
+'<button class="btn-primary" type="submit">Отправить</button>' +
+'<button class="btn-second" type="button" onclick="closeFeedback();">Закрыть</button>' +
+'</div>' +
+'</form>';
+
+function closeFeedback() {
+  feedbackModal.className = 'feedback-modal';
+}
+
+feedbackModal.className = 'feedback-modal';
+
+var feedbackModalBackground = document.createElement('div');
+feedbackModalBackground.className = 'feedback-modal-background';
+feedbackModalBackground.onclick = function() {
+  closeFeedback();
+}
+
+feedbackModal.appendChild(feedbackModalBackground);
+
+var feedbackButton = player.controlBar.addChild('button');
+feedbackButton.el().innerHTML = '<img src="../src/images/feedback.svg" alt="Оставить жалобу"/>'; 
+feedbackButton.el().className = 'vjs-icon-button'; 
+
+feedbackButton.el().onclick = function() { 
+  feedbackModal.className = 'feedback-modal show';
+};
+
+document.querySelector('.video-js').appendChild(feedbackModal);
+
+var seasonSelector = document.createElement('span');
+seasonSelector = 
 
 /* Scripts i use for automatic get title and description
   title: document.title,
@@ -369,6 +671,14 @@ player.contextmenuUI({
       href: 'https://cerberus.vip', // Ссылка
       label: '© CERBERUS', // Название
    }]
+});
+
+player.spriteThumbnails({
+  url: '../src/thumbnails/thumbnails.png',
+  width: 160,
+  height: 90,
+  columns: 20,
+  interval: 2
 });
 
 player.posterTime();
