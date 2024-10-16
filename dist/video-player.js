@@ -271,7 +271,7 @@ var screenshotButton = player.controlBar.addChild('button');
 
 // Присваиваем классы для стилизации
 screenshotButton.addClass("vjs-icon-button");
-screenshotButton.el().innerHTML = "<img src='../src/images/camera.svg' alt='Сделать скриншот'>";
+screenshotButton.el().innerHTML = "<img src='src/images/camera.svg' alt='Сделать скриншот'>";
 // Добавляем обработчик клика
 screenshotButton.el().onclick = function() {
   var videoElement = player.el().getElementsByTagName('video')[0];
@@ -373,7 +373,7 @@ playlistMenu.className = 'vjs-playlist-menu';
 // Добавляем кнопку плейлиста в controlBar
 var playlistButton = player.controlBar.addChild('button');
 playlistButton.addClass('vjs-icon-button');
-playlistButton.el().innerHTML = '<img src="../src/images/season.svg" alt="Открыть меню плейлиста">';
+playlistButton.el().innerHTML = '<img src="src/images/season.svg" alt="Открыть меню плейлиста">';
 playlistButton.el().addEventListener('click', () => {
   document.querySelector('.player-container').classList.toggle('active-playlist');
   playlistMenu.classList.toggle('active');
@@ -398,22 +398,22 @@ playlistMenuNavSearch.addEventListener('input', function() {
 // Кнопки навигации
 var playlistMenuNavFirstVideoButton = document.createElement('button');
 playlistMenuNavFirstVideoButton.className = 'vjs-playlist-menu-nav-btn';
-playlistMenuNavFirstVideoButton.innerHTML = "<img src='../src/images/skip-button.svg' alt='Первое видео'/>";
+playlistMenuNavFirstVideoButton.innerHTML = "<img src='src/images/skip-button.svg' alt='Первое видео'/>";
 playlistMenuNavFirstVideoButton.title = "Первое видео";
 
 var playlistMenuNavPrevVideoButton = document.createElement('button');
 playlistMenuNavPrevVideoButton.className = 'vjs-playlist-menu-nav-btn rotate';
-playlistMenuNavPrevVideoButton.innerHTML = "<img src='../src/images/next-button.svg' alt='Предыдущее видео'/>";
+playlistMenuNavPrevVideoButton.innerHTML = "<img src='src/images/next-button.svg' alt='Предыдущее видео'/>";
 playlistMenuNavPrevVideoButton.title = "Предыдущее видео";
 
 var playlistMenuNavNextVideoButton = document.createElement('button');
 playlistMenuNavNextVideoButton.className = 'vjs-playlist-menu-nav-btn';
-playlistMenuNavNextVideoButton.innerHTML = "<img src='../src/images/next-button.svg' alt='Следующее видео'/>";
+playlistMenuNavNextVideoButton.innerHTML = "<img src='src/images/next-button.svg' alt='Следующее видео'/>";
 playlistMenuNavNextVideoButton.title = "Следующее видео";
 
 var playlistMenuNavLastVideoButton = document.createElement('button');
 playlistMenuNavLastVideoButton.className = 'vjs-playlist-menu-nav-btn rotate';
-playlistMenuNavLastVideoButton.innerHTML = "<img src='../src/images/skip-button.svg' alt='Последнее видео'/>";
+playlistMenuNavLastVideoButton.innerHTML = "<img src='src/images/skip-button.svg' alt='Последнее видео'/>";
 playlistMenuNavLastVideoButton.title = "Последнее видео";
 
 // Добавляем обработчики событий для кнопок навигации
@@ -545,7 +545,7 @@ feedbackModalBackground.onclick = function() {
 feedbackModal.appendChild(feedbackModalBackground);
 
 var feedbackButton = player.controlBar.addChild('button');
-feedbackButton.el().innerHTML = '<img src="../src/images/feedback.svg" alt="Оставить жалобу"/>'; 
+feedbackButton.el().innerHTML = '<img src="src/images/feedback.svg" alt="Оставить жалобу"/>'; 
 feedbackButton.el().className = 'vjs-icon-button'; 
 
 feedbackButton.el().onclick = function() { 
@@ -674,7 +674,7 @@ player.contextmenuUI({
 });
 
 player.spriteThumbnails({
-  url: '../src/thumbnails/thumbnails.png',
+  url: 'src/thumbnails/thumbnails.png',
   width: 160,
   height: 90,
   columns: 20,
