@@ -10,6 +10,7 @@ let seasons = [
         description: "Краткое описание первого эпизода.",
         duration: "25 мин",
         releaseDate: "1 января 2020",
+        image: "https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg",
         videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
         opening: {
           start: 10,
@@ -26,6 +27,7 @@ let seasons = [
         description: "Краткое описание второго эпизода.",
         duration: "30 мин",
         releaseDate: "8 января 2020",
+        image: "https://i1.sndcdn.com/artworks-000005010194-jwzy1c-t500x500.jpg",
         videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
         opening: {
           start: 0,
@@ -50,6 +52,7 @@ let seasons = [
         duration: "28 мин",
         releaseDate: "5 января 2021",
         videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        image: "https://i1.sndcdn.com/artworks-000005010194-jwzy1c-t500x500.jpg",
         opening: {
           start: 5,
           end: 15
@@ -65,32 +68,7 @@ let seasons = [
 
 let selectedSeason = seasons[0];
 
-let playlist = [
-  {
-    image: "https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg",
-    name: "Эпизод 1: Название эпизода 1",
-    description: "Краткое описание первого эпизода.",
-    video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-  },
-  {
-    image: "https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg",
-    name: "Эпизод 1: Название эпизода 1",
-    description: "Краткое описание первого эпизода.",
-    video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-  },
-  {
-    image: "https://i1.sndcdn.com/artworks-000005010194-jwzy1c-t500x500.jpg",
-    name: "Эпизод 2: Название эпизода 2",
-    description: "Краткое описание второго эпизода.",
-    video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-  },
-  {
-    image: "https://i1.sndcdn.com/artworks-000005010194-jwzy1c-t500x500.jpg",
-    name: "Эпизод 2: Название эпизода 2",
-    description: "Краткое описание второго эпизода.",
-    video: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-  }
-]
+let playlist = selectedSeason.episodes;
 
 var player = videojs(document.querySelector('video-js'), {
   controlBar: {
@@ -158,10 +136,12 @@ seasons.forEach(season => {
   
   menuItem.addEventListener('click', function() {
     selectedSeason = season;
+    playlist = selectedSeason.episodes;
     seasonButton.innerHTML = season.seasonNumber + " сезон " + ' &#x25BC;';
     seasonMenu.classList.remove('visible');
 
     updateSeasonDetails(selectedSeason);
+    renderPlaylist(playlist);
   });
   
   seasonMenu.appendChild(menuItem);
@@ -190,23 +170,13 @@ function updateSeasonDetails(season) {
 var openingButton = document.createElement('button');
 openingButton.innerHTML = 'Пропустить опенинг'; 
 openingButton.className = 'vjs-opening-button'; 
-
-openingButton.style.position = 'absolute';
-openingButton.style.bottom = '15%'; 
-openingButton.style.left = '20px'; 
-openingButton.style.zIndex = '1000'; 
 openingButton.style.display = 'none'; 
 
 document.querySelector('.video-js').appendChild(openingButton);
 
 var endingButton = document.createElement('button');
 endingButton.innerHTML = 'Пропустить эндинг'; 
-endingButton.className = 'vjs-opening-button'; 
-
-endingButton.style.position = 'absolute';
-endingButton.style.bottom = '15%'; 
-endingButton.style.left = '20px'; 
-endingButton.style.zIndex = '1000'; 
+endingButton.className = 'vjs-opening-button ending'; 
 endingButton.style.display = 'none'; 
 
 document.querySelector('.video-js').appendChild(endingButton);
@@ -358,7 +328,7 @@ function updateActiveVideo(index) {
   if (index >= 0 && index < playlist.length) {
     currentIndex = index;
     const video = playlist[index];
-    player.src({ type: "video/mp4", src: video.video });
+    player.src({ type: "video/mp4", src: video.videoUrl });
     player.poster(video.image); // Обновляем постер
     player.currentTime(0);
     player.play();
@@ -466,7 +436,7 @@ function renderPlaylist(filteredPlaylist) {
 
     var playlistVideoItemDescription = document.createElement('div');
     var playlistVideoItemDescriptionTitle = document.createElement('h3');
-    playlistVideoItemDescriptionTitle.textContent = video.name;
+    playlistVideoItemDescriptionTitle.textContent = video.title;
     var playlistVideoItemDescriptionDescription = document.createElement('p');
     playlistVideoItemDescriptionDescription.textContent = video.description;
     playlistVideoItemDescription.appendChild(playlistVideoItemDescriptionTitle);
@@ -613,7 +583,6 @@ player.qualityMenu({
   useResolutionLabels: true,
 });
 
-/*
 // Quality Selector Plugin
 player.hlsQualitySelector({
   autoPlacement: "bottom",
@@ -621,7 +590,7 @@ player.hlsQualitySelector({
   getCurrentQuality: "auto",
   sortAscending: false,
   vjsIconClass: "vjs-icon-cog",
-}); */
+});
 
 // Mobile Ui Plugin
 player.mobileUi({
