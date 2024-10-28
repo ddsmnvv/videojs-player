@@ -87,9 +87,9 @@ var player = videojs(document.querySelector('video-js'), {
 			   'playbackRateMenuButton',
 			   'chaptersButton',
 			   'descriptionsButton',
-         'fullscreenToggle',
 			   'audioTrackButton',
-			   'qualityMenu',],
+			   'qualityMenu',
+         'fullscreenToggle'],
     skipButtons: {
       forward: 10,
       backward: 10
@@ -239,13 +239,13 @@ endingButton.addEventListener('click', function() {
   }
 });
 
-var screenshotButton = player.controlBar.addChild('button');
+var screenshotButton = document.createElement('button');
 
 // Присваиваем классы для стилизации
-screenshotButton.addClass("vjs-icon-button");
-screenshotButton.el().innerHTML = "<img src='src/images/camera.svg' alt='Сделать скриншот'>";
+screenshotButton.classList.add("vjs-icon-button");
+screenshotButton.innerHTML = "<img src='src/images/camera.svg' alt='Сделать скриншот'>";
 // Добавляем обработчик клика
-screenshotButton.el().onclick = function() {
+screenshotButton.onclick = function() {
   var videoElement = player.el().getElementsByTagName('video')[0];
   var canvas = document.createElement('canvas');
   canvas.width = videoElement.videoWidth;
@@ -346,10 +346,10 @@ var playlistMenu = document.createElement('div');
 playlistMenu.className = 'vjs-playlist-menu';
 
 // Добавляем кнопку плейлиста в controlBar
-var playlistButton = document.createElement('button');
-playlistButton.classList.add('vjs-icon-button');
-playlistButton.innerHTML = '<img src="src/images/season.svg" alt="Открыть меню плейлиста">';
-playlistButton.addEventListener('click', () => {
+var playlistButton = player.controlBar.addChild('button');
+playlistButton.addClass('vjs-icon-button');
+playlistButton.el().innerHTML = '<img src="src/images/season.svg" alt="Открыть меню плейлиста">';
+playlistButton.el().addEventListener('click', () => {
   document.querySelector('.player-container').classList.toggle('active-playlist');
   playlistMenu.classList.toggle('active');
 });
@@ -521,11 +521,11 @@ feedbackModal.appendChild(feedbackModalBackground);
 
 document.querySelector('.video-js').appendChild(feedbackModal);
 
-var feedbackButton = player.controlBar.addChild('button');
-feedbackButton.el().innerHTML = '<img src="src/images/feedback.svg" alt="Оставить жалобу"/>'; 
-feedbackButton.el().className = 'vjs-icon-button'; 
+var feedbackButton = document.createElement('button');
+feedbackButton.innerHTML = '<img src="src/images/feedback.svg" alt="Оставить жалобу"/>'; 
+feedbackButton.classList.add('vjs-icon-button'); 
 
-feedbackButton.el().onclick = function() { 
+feedbackButton.onclick = function() { 
   feedbackModal.className = 'feedback-modal show';
 };
 
@@ -539,9 +539,9 @@ var brightnessSliderButton = document.createElement('button');
 brightnessSliderButton.className = "vjs-icon-button";
 brightnessSliderButton.innerHTML = '<img src="src/images/brightness.svg" alt="Яркость"/>'; 
 
-brightnessSliderButton.addEventListener('click', function() {
+brightnessSliderButton.onclick = () => {
   brightnessSliderBackground.classList.toggle('visible');
-});
+};
 
 // Добавляем ползунок яркости в controlBar
 var brightnessSlider = document.createElement('input');
@@ -561,9 +561,6 @@ brightnessSlider.addEventListener('input', function() {
 brightnessSliderBackground.appendChild(brightnessSlider);
 brightnessSliderContainer.appendChild(brightnessSliderBackground);
 brightnessSliderContainer.appendChild(brightnessSliderButton);
-
-// Добавляем ползунок в controlBar
-player.controlBar.el().appendChild(brightnessSliderContainer);
 
 
 var seasonSelector = document.createElement('span');
@@ -680,12 +677,12 @@ player.spriteThumbnails({
 
 player.on('ready', function() {
   var controlBar = player.controlBar.el();
+  var playerAudioButton = controlBar.querySelector('.vjs-audio-button');
 
-  var qualityMenuSettings = controlBar.querySelector('.vjs-quality-menu-wrapper');
-  var audioMenuSettings = controlBar.querySelector('.vjs-audio-button');
-  var playerFullscreenButton = controlBar.querySelector('.vjs-fullscreen-control');
-  controlBar.insertBefore(playlistButton, playerFullscreenButton);
-  controlBar.insertBefore(qualityMenuSettings, audioMenuSettings);
+  controlBar.insertBefore(seasonSelectorContainer, playerAudioButton);
+  controlBar.insertBefore(brightnessSliderContainer, playerAudioButton);
+  controlBar.insertBefore(feedbackButton, playerAudioButton);
+  controlBar.insertBefore(screenshotButton, playerAudioButton);
 });
 
 player.controlBar.el().appendChild(seasonSelectorContainer);
