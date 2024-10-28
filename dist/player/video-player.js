@@ -11,14 +11,14 @@ let seasons = [
         duration: "25 мин",
         releaseDate: "1 января 2020",
         image: "https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg",
-        videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        videoUrl: "https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8",
         opening: {
           start: 10,
           end: 20
         },
         ending: [
-          { start: 180, end: 190 }, // Первый эндинг (3:00 - 3:10)
-          { start: 240, end: 250 }  // Второй эндинг (4:00 - 4:10)
+          { start: 30, end: 40 }, // Первый эндинг (3:00 - 3:10)
+          { start: 50, end: 60 }  // Второй эндинг (4:00 - 4:10)
         ]
       },
       {
@@ -28,7 +28,7 @@ let seasons = [
         duration: "30 мин",
         releaseDate: "8 января 2020",
         image: "https://i1.sndcdn.com/artworks-000005010194-jwzy1c-t500x500.jpg",
-        videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        videoUrl: "https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8",
         opening: {
           start: 0,
           end: 10
@@ -51,7 +51,7 @@ let seasons = [
         description: "Описание первого эпизода второго сезона.",
         duration: "28 мин",
         releaseDate: "5 января 2021",
-        videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        videoUrl: "https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8",
         image: "https://i1.sndcdn.com/artworks-000005010194-jwzy1c-t500x500.jpg",
         opening: {
           start: 5,
@@ -88,13 +88,16 @@ var player = videojs(document.querySelector('video-js'), {
 			   'chaptersButton',
 			   'descriptionsButton',
 			   'audioTrackButton',
-			   'QualitySelector',
+			   'QualityMenu',
 			   'fullscreenToggle'],
     skipButtons: {
       forward: 10,
       backward: 10
     },
     //volumePanel: {inline: false}
+  },
+  plugins: {
+    qualityMenu: {} // Включение меню качества
   },
   enableSmoothSeeking: true,
   inactivityTimeout: 3000,
@@ -157,7 +160,6 @@ seasonSelectorContainer.addEventListener('click', function() {
 
 seasonSelectorContainer.appendChild(seasonButton);
 seasonSelectorContainer.appendChild(seasonMenu);
-player.controlBar.el().appendChild(seasonSelectorContainer);
 
 function updateSeasonDetails(season) {
   player.titleBar.update({
@@ -237,13 +239,13 @@ endingButton.addEventListener('click', function() {
   }
 });
 
-var screenshotButton = player.controlBar.addChild('button');
+var screenshotButton = document.createElement('button');
 
 // Присваиваем классы для стилизации
-screenshotButton.addClass("vjs-icon-button");
-screenshotButton.el().innerHTML = "<img src='src/images/camera.svg' alt='Сделать скриншот'>";
+screenshotButton.classList.add("vjs-icon-button");
+screenshotButton.innerHTML = "<img src='src/images/camera.svg' alt='Сделать скриншот'>";
 // Добавляем обработчик клика
-screenshotButton.el().onclick = function() {
+screenshotButton.onclick = function() {
   var videoElement = player.el().getElementsByTagName('video')[0];
   var canvas = document.createElement('canvas');
   canvas.width = videoElement.videoWidth;
@@ -326,25 +328,28 @@ let currentIndex = 0;
 // Функция для обновления активного видео в плеере
 function updateActiveVideo(index) {
   if (index >= 0 && index < playlist.length) {
-    currentIndex = index;
-    const video = playlist[index];
-    player.src({ type: "video/mp4", src: video.videoUrl });
-    player.poster(video.image); // Обновляем постер
-    player.currentTime(0);
-    player.play();
-    highlightActiveVideo();
+      currentIndex = index;
+      const video = playlist[index];
+      player.pause(); // Остановка плеера перед сменой источника
+      player.src([{ type: "application/x-mpegURL", src: video.videoUrl }]);
+      player.poster(video.image); // Обновляем постер
+      player.load(); // Загружаем новый источник
+      player.currentTime(0);
+      player.play();
+      highlightActiveVideo();
   }
 }
+
 
 // Создаем меню плейлиста
 var playlistMenu = document.createElement('div');
 playlistMenu.className = 'vjs-playlist-menu';
 
 // Добавляем кнопку плейлиста в controlBar
-var playlistButton = player.controlBar.addChild('button');
-playlistButton.addClass('vjs-icon-button');
-playlistButton.el().innerHTML = '<img src="src/images/season.svg" alt="Открыть меню плейлиста">';
-playlistButton.el().addEventListener('click', () => {
+var playlistButton = document.createElement('button');
+playlistButton.classList.add('vjs-icon-button');
+playlistButton.innerHTML = '<img src="src/images/season.svg" alt="Открыть меню плейлиста">';
+playlistButton.addEventListener('click', () => {
   document.querySelector('.player-container').classList.toggle('active-playlist');
   playlistMenu.classList.toggle('active');
 });
@@ -361,7 +366,7 @@ playlistMenuNavSearch.placeholder = 'Поиск';
 // Обработчик поиска
 playlistMenuNavSearch.addEventListener('input', function() {
   const searchTerm = playlistMenuNavSearch.value.toLowerCase();
-  const filteredPlaylist = playlist.filter(item => item.name.toLowerCase().includes(searchTerm));
+  const filteredPlaylist = playlist.filter(item => item.title.toLowerCase().includes(searchTerm));
   renderPlaylist(filteredPlaylist);
 });
 
@@ -490,6 +495,10 @@ player.on('ended', function() {
 
 var feedbackModal = document.createElement('div');
 
+function closeFeedback() {
+  feedbackModal.className = 'feedback-modal';
+}
+
 feedbackModal.innerHTML = 
 '<form type="POST">' +
 '<h1>Оставьте жалобу</h1>' +
@@ -499,10 +508,6 @@ feedbackModal.innerHTML =
 '<button class="btn-second" type="button" onclick="closeFeedback();">Закрыть</button>' +
 '</div>' +
 '</form>';
-
-function closeFeedback() {
-  feedbackModal.className = 'feedback-modal';
-}
 
 feedbackModal.className = 'feedback-modal';
 
@@ -514,15 +519,15 @@ feedbackModalBackground.onclick = function() {
 
 feedbackModal.appendChild(feedbackModalBackground);
 
-var feedbackButton = player.controlBar.addChild('button');
-feedbackButton.el().innerHTML = '<img src="src/images/feedback.svg" alt="Оставить жалобу"/>'; 
-feedbackButton.el().className = 'vjs-icon-button'; 
+document.querySelector('.video-js').appendChild(feedbackModal);
 
-feedbackButton.el().onclick = function() { 
+var feedbackButton = document.createElement('button');
+feedbackButton.innerHTML = '<img src="src/images/feedback.svg" alt="Оставить жалобу"/>'; 
+feedbackButton.classList.add('vjs-icon-button'); 
+
+feedbackButton.onclick = function() { 
   feedbackModal.className = 'feedback-modal show';
 };
-
-document.querySelector('.video-js').appendChild(feedbackModal);
 
 var seasonSelector = document.createElement('span');
 seasonSelector = 
@@ -576,20 +581,6 @@ player.logocontrolbar({
   width: 65, //change logo controlbar height
   height: 35, //change logo controlbar width
   opacity: 1,
-});
-
-// Contrib Quality Menu Plugin
-player.qualityMenu({
-  useResolutionLabels: true,
-});
-
-// Quality Selector Plugin
-player.hlsQualitySelector({
-  autoPlacement: "bottom",
-  displayCurrentQuality: true,
-  getCurrentQuality: "auto",
-  sortAscending: false,
-  vjsIconClass: "vjs-icon-cog",
 });
 
 // Mobile Ui Plugin
@@ -648,6 +639,15 @@ player.spriteThumbnails({
   height: 90,
   columns: 20,
   interval: 2
+});
+
+player.on('ready', function() {
+  var controlBar = player.controlBar.el();
+  var playerFullscreenButton = controlBar.querySelector('.vjs-fullscreen-control');
+  controlBar.insertBefore(seasonSelectorContainer, playerFullscreenButton);
+  controlBar.insertBefore(screenshotButton, playerFullscreenButton);
+  controlBar.insertBefore(playlistButton, playerFullscreenButton);
+  controlBar.insertBefore(feedbackButton, playerFullscreenButton);
 });
 
 player.posterTime();
