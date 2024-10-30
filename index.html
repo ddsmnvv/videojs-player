@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="dist/VideoJs/video-js.css">
   <!-- Luxmty Skin -->
   <link rel="stylesheet" href="dist/vjs-luxmty.css">
+  <link rel="stylesheet" href="dist/plugins/videojs-imp/videojs.ads.min.css">
   <link rel="stylesheet" href="src/css/style.css">
 </head>
 
@@ -60,7 +61,7 @@
 <body>
 <!-- Player -->
 <div class="player-container">
-  <video-js id="video-player" class="vjs-luxmty vjs-16-9 vjs-show-big-play-button-on-pause" crossorigin="anonymous" controls playsinline>
+  <video-js id="video-element-id" class="vjs-luxmty vjs-16-9 vjs-show-big-play-button-on-pause" crossorigin="anonymous" controls playsinline>
     <source src="https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8">
   </video-js>
 </div>
@@ -79,6 +80,7 @@
   <script src='dist/plugins/context-menu-ui.js'></script>
   <script src='dist/plugins/svg-loading-spinner.js'></script>
   <script src='dist/plugins/video-sprite-thumbnails.js'></script>
+  <script src="dist/plugins/videojs-ads/videojs.ads.min.js"></script>
 
   <!-- Video Player Settings -->
   <script src="dist/player/video-player.js"></script>

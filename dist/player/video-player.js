@@ -97,7 +97,7 @@ var player = videojs(document.querySelector('video-js'), {
     //volumePanel: {inline: false}
   },
   plugins: {
-    qualityMenu: {} // Включение меню качества
+    qualityMenu: {}
   },
   enableSmoothSeeking: true,
   inactivityTimeout: 3000,
@@ -121,6 +121,42 @@ var player = videojs(document.querySelector('video-js'), {
   },
 	
 });
+
+// Инициализация плагина рекламы
+player.ads(); 
+
+// Запрос рекламы при смене контента
+player.on('contentchanged', function() {
+  player.trigger('adsready');
+});
+
+// Обработка показа рекламы
+player.on('readyforpreroll', function() {
+  player.ads.startLinearAdMode();
+  player.src('src/videos/ad-example.mp4');
+
+  // Убираем элементы управления во время рекламы
+  player.titleBar.hide();
+
+  player.controlBar.getChild('playToggle').disable(); // Отключить паузу/воспроизведение
+  player.controlBar.getChild('progressControl').disable(); // Отключить перемотку
+
+  player.one('adplaying', function() {
+    player.trigger('ads-ad-started');
+  });
+
+  player.one('adended', function() {
+    player.ads.endLinearAdMode();
+    player.controlBar.getChild('playToggle').enable();
+    player.controlBar.getChild('progressControl').enable();
+    player.titleBar.show(); // Восстанавливаем элементы управления
+
+    updateTooltipContent();
+});
+});
+
+// Инициализация рекламы
+player.trigger('adsready');
 
 var seasonSelectorContainer = document.createElement('div');
 seasonSelectorContainer.className = 'vjs-season-selector-container';
@@ -325,21 +361,47 @@ player.titleBar.update({
 // Переменная для хранения текущего индекса видео
 let currentIndex = 0;
 
-// Функция для обновления активного видео в плеере
+// Функция для обновления активного видео с показом рекламы перед проигрыванием
 function updateActiveVideo(index) {
   if (index >= 0 && index < playlist.length) {
-      currentIndex = index;
-      const video = playlist[index];
-      player.pause(); // Остановка плеера перед сменой источника
+    currentIndex = index;
+    const video = playlist[index];
+
+    // Показ рекламы перед началом видео
+    showAd(() => {
+      // Обновляем источник после рекламы
       player.src([{ type: "application/x-mpegURL", src: video.videoUrl }]);
       player.poster(video.image); // Обновляем постер
-      player.load(); // Загружаем новый источник
-      player.currentTime(0);
-      player.play();
+      player.load();
+      player.play(); // Начинаем проигрывание после завершения рекламы
       highlightActiveVideo();
+    });
+
+    playlistMenu.classList.remove('active');
+    document.querySelector('.player-container').classList.remove('active-playlist');
   }
 }
 
+// Функция для показа рекламы и восстановления плеера
+function showAd(callback) {
+  player.ads.startLinearAdMode();
+  player.src('src/videos/ad-example.mp4');
+  player.titleBar.hide(); // Убираем элементы управления
+
+  player.controlBar.getChild('playToggle').disable();
+  player.controlBar.getChild('progressControl').disable();
+
+  player.one('adended', function () {
+    player.ads.endLinearAdMode();
+    player.controlBar.getChild('playToggle').enable();
+    player.controlBar.getChild('progressControl').enable();
+    player.titleBar.show(); // Восстанавливаем элементы управления
+
+    if (typeof callback === 'function') {
+      callback();
+    }
+  });
+}
 
 // Создаем меню плейлиста
 var playlistMenu = document.createElement('div');
@@ -390,6 +452,48 @@ var playlistMenuNavLastVideoButton = document.createElement('button');
 playlistMenuNavLastVideoButton.className = 'vjs-playlist-menu-nav-btn rotate';
 playlistMenuNavLastVideoButton.innerHTML = "<img src='src/images/skip-button.svg' alt='Последнее видео'/>";
 playlistMenuNavLastVideoButton.title = "Последнее видео";
+
+// Создаем элементы подсказок для навигации
+var prevTooltip = document.createElement('div');
+prevTooltip.className = 'vjs-tooltip';
+
+var nextTooltip = document.createElement('div');
+nextTooltip.className = 'vjs-tooltip';
+
+playlistMenuNavPrevVideoButton.appendChild(prevTooltip);
+playlistMenuNavNextVideoButton.appendChild(nextTooltip);
+
+function updateTooltipContent() {
+  const prevIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+  const nextIndex = (currentIndex + 1) % playlist.length;
+
+  // Обновляем содержимое подсказок только если видео есть
+  if (currentIndex !== 0) {
+    prevTooltip.style.display = 'block';
+    prevTooltip.innerHTML = `Предыдущий: ${playlist[prevIndex].title}`;
+  } else {
+    prevTooltip.style.display = 'none'; // Скрыть подсказку, если нет предыдущего видео
+  }
+
+  if (currentIndex !== playlist.length - 1) {
+    nextTooltip.style.display = 'block';
+    nextTooltip.innerHTML = `Следующий: ${playlist[nextIndex].title}`;
+  } else {
+    nextTooltip.style.display = 'none'; // Скрыть подсказку, если нет следующего видео
+  }
+}
+
+// Обработчики событий для показа и скрытия подсказок
+playlistMenuNavPrevVideoButton.addEventListener('mouseenter', () => {
+  updateTooltipContent();
+  showTooltip(prevTooltip, playlistMenuNavPrevVideoButton);
+});
+playlistMenuNavPrevVideoButton.addEventListener('mouseleave', () => hideTooltip(prevTooltip));
+
+playlistMenuNavNextVideoButton.addEventListener('mouseenter', () => {
+  updateTooltipContent();
+  showTooltip(nextTooltip, playlistMenuNavNextVideoButton);
+});
 
 // Добавляем обработчики событий для кнопок навигации
 playlistMenuNavFirstVideoButton.addEventListener('click', () => {
@@ -476,7 +580,7 @@ function highlightActiveVideo() {
   });
 }
 
-// Первоначальный рендер плейлиста
+// Добавляем вызов функции для рендеринга плейлиста
 renderPlaylist(playlist);
 playlistMenu.appendChild(playlistContainer);
 
@@ -561,10 +665,6 @@ brightnessSlider.addEventListener('input', function() {
 brightnessSliderBackground.appendChild(brightnessSlider);
 brightnessSliderContainer.appendChild(brightnessSliderBackground);
 brightnessSliderContainer.appendChild(brightnessSliderButton);
-
-
-var seasonSelector = document.createElement('span');
-seasonSelector = 
 
 /* Scripts i use for automatic get title and description
   title: document.title,

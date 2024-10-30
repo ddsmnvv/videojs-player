@@ -364,6 +364,38 @@
     bottom: 0;
   }
 
+  .video-js.vjs-ad-playing .vjs-play-progress {
+    background-color: yellow !important;
+  }
+
+  .video-js.vjs-ad-playing .vjs-opening-button {
+    display: none !important;
+  }
+
+  .video-js.vjs-ad-playing .vjs-control-bar > *:not(.vjs-progress-control) {
+    display: none;
+  }
+
+  .vjs-time-control {
+    display: flex !important;
+  }
+
+  .vjs-tooltip {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1000;
+    transition: opacity .15s ease;
+  }
+
   .vjs-playlist-menu-nav {
     display: flex;
     align-items: center;
@@ -374,6 +406,11 @@
     position: relative;
     cursor: pointer;
     height: 100%;
+  }
+
+  .vjs-playlist-menu-nav-btn:hover .vjs-tooltip {
+    opacity: 1;
+    visibility: visible;
   }
 
   .vjs-playlist-menu-nav-btn img {
